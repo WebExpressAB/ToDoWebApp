@@ -102,7 +102,7 @@ button:hover {
     margin-top: 20px;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 10px 5px 5px rgb(224, 222, 222);
+    box-shadow: 10px 5px 5px rgba(166, 166, 166, 0.287);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 
 }
@@ -116,6 +116,13 @@ td, th {
     border-radius: 10px;
 }
 
+i {
+    margin-left: 15px;
+}
+
+i:hover {
+opacity: 50%;
+}
 .myCheck {
     width: 20px;
     height: 20px;

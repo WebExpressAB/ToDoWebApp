@@ -90,7 +90,7 @@ function lasFranLocalStorage() {
   }
 
   //Skapar funktion för att kunna dra i sina todos och prioritera de 
-  let draggedIndex = null;
+let draggedIndex = null;
 
 function startDrag(event, index) {
     draggedIndex = index;
