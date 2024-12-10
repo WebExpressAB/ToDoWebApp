@@ -27,6 +27,7 @@ background-color: #bfcfbe;
     border: solid;
     border-radius: 20px;
     border-color: #b2bbb1;
+    border-width: thin;
     background-color: #ffe6e0;
     margin: 5px;
   }
@@ -42,14 +43,34 @@ background-color: #bfcfbe;
     border: solid;
     border-radius: 20px;
     border-color: #b2bbb1;
-    background-color: #fffdf4;
+    border-width: thin;
+    background-color: white;
     margin: 5px;
   }
  
   .sidenav a:hover {
    opacity: 50%;
   }
-  
+  /* Dölj hamburgermenyn på stora skärmar */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    background: white;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.hamburger i {
+    font-size: 24px;
+}
+
+
   .main {
     margin-left: 200px;
     padding: 0px 10px;
@@ -126,4 +147,69 @@ opacity: 50%;
 .myCheck {
     width: 20px;
     height: 20px;
+}
+
+/* Visa hamburgermenyn och dölj sidomenyn på mindre skärmar */
+@media screen and (max-width: 950px) {
+    .sidenav {
+        display: none;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #bfcfbe;
+        z-index: 1;
+    }
+
+    .sidenav.active {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .card1, .card2 {
+        margin: 20px 10px;
+        padding: 20px;
+        height: 100%;
+    }
+
+    .btnRensa {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .card1, .card2 {
+        margin: 2px;
+        padding: 20px;
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+    
+    button {
+        box-shadow: none;
+    }
+
 }

@@ -18,7 +18,7 @@ function uppdateraOutput() {
         output +=
             "<tr draggable='true' ondragstart='startDrag(event, " + i + ")' ondragover='allowDrop(event)' ondrop='drop(event, " + i + ")'>" +
             "<td>" +
-            "<label><input type='checkbox'> " +
+            "<label><input type='checkbox'>" +
             toDoToday[i] +
             "</label>" +
             "</td>" +
@@ -40,6 +40,12 @@ function lasFranLocalStorage() {
     if (sparadData) {
         toDoToday = JSON.parse(sparadData);
     }
+}
+
+function toggleMenu() {
+    console.log("Hamburger clicked!");
+    const sidenav = document.querySelector('.sidenav');
+    sidenav.classList.toggle('active');
 }
 
   // Funktion för att lägga till upp
