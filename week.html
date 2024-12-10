@@ -8,7 +8,7 @@
     <title>ToDoApp</title>
 </head>
 <body>
-    <!-- Sidebar -->
+   <!-- Sidebar -->
 <div class="sidenav">
     <p id="datetime" class="datetime"></p>
     <a href="/index.html">Today</a>
@@ -16,14 +16,16 @@
     <a href="#">This month</a>
     <a href="#">Projects</a>
   </div>
-  
+
+    <!-- Hamburger menu button -->
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+    </div>
   <div class="main">
     <div class="card1">
        <div id="myDIV" class="header">
         <h1>This week</h1>
-        <input type="text" id="weekInput" placeholder="Title...">
-        <button id="addBtn" class="addBtn" onclick="laggaTill()">Add</button>
-        <button id="sparaKnapp" onclick="sparaRedigering()" style="display: none;">Save edit</button>
+      
       </div>
     </div>
     <div class="card2">
@@ -35,10 +37,30 @@
             <td>Thursday</td>
             <td>Friday</td>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            <tr>
+            <td>  <input type="text" id="monInput"  class="weekInput" placeholder="Title...">
+                <button onclick="laggaTill('Monday', 'monInput')" >Add</button>
+            <td><input type="text" id="tuesInput" placeholder="Title..." class="weekInput">
+                <button onclick="laggaTill('Tuesday', 'tuesInput')" >Add</button></td>
+            <td><input type="text" id="wedInput" placeholder="Title..." class="weekInput">
+                <button onclick="laggaTill('Wednesday', 'wedInput')">Add</button></td>
+            <td><input type="text" id="thursInput" placeholder="Title..." class="weekInput">
+                <button onclick="laggaTill('Thursday', 'thursInput')">Add</button></td>
+            <td><input type="text" id="friInput" placeholder="Title..." class="weekInput">
+                <button onclick="laggaTill('Friday', 'friInput')">Add</button></td>
+        </tr>
+        <tr>
+            <td><ul id="mondayOut"></ul></td>
+            <td><ul id="tuesdayOut"></ul></td>
+            <td><ul id="wednesdayOut"></ul></td>
+            <td><ul id="thursdayOut"></ul></td>
+            <td><ul id="fridayOut"></ul></td>
+        </tr>
+        </tbody>
        </table>
     </div>
   </div>
 </body>
-<script src="script.js" type="text/javascript"></script>
+<script src="weekscript.js" type="text/javascript"></script>
 </html>

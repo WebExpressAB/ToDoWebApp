@@ -19,8 +19,7 @@ function uppdateraOutput() {
             "<tr draggable='true' ondragstart='startDrag(event, " + i + ")' ondragover='allowDrop(event)' ondrop='drop(event, " + i + ")'>" +
             "<td>" +
             "<label><input type='checkbox'>" +
-            toDoToday[i] +
-            "</label>" +
+           "</label>" + toDoToday[i] +
             "</td>" +
             "<td>" +
             "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" + " " +
