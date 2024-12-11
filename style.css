@@ -132,6 +132,16 @@ button:hover {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.cardWeek {
+    background-color: white;
+    margin: 50px;
+    margin-top: 20px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
 table {
     table-layout: auto; 
     width: 100%; 
@@ -226,13 +236,13 @@ li {
     .weekInput {
         width: 90%;
     }
-    .card2 {
+    .cardWeek {
         background-color: transparent;
         box-shadow: none;
         margin-top: 0;
         padding-top: 0;
     }
-    .day {
+        .day {
         background-color: white;
         box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
     }
@@ -240,7 +250,7 @@ li {
 
 /* Visa hamburgermenyn och dölj sidomenyn på mindre skärmar */
 @media screen and (max-width: 950px) {
-    .card2 {
+    .cardWeek {
         background-color: transparent;
         box-shadow: none;
         margin-top: 0;
@@ -277,7 +287,7 @@ li {
         width: 100%;
         margin-bottom: 10px;
     }
-    .card1, .card2 {
+    .card1, .card2, .cardWeek {
         margin: 20px 10px;
         padding: 20px;
         height: 100%;
@@ -299,7 +309,7 @@ li {
 }
 
 @media screen and (max-width: 650px) {
-    .card1, .card2 {
+    .card1, .card2, .cardWeek {
         margin: 2px;
         padding: 20px;
         box-shadow: none;
