@@ -18,12 +18,14 @@ function uppdateraOutput(day) {
     let output = "";
     toDoLists[day].forEach((item, index) => {
         output += `
-            <li>
+            <li><label><input type='checkbox' style='width: 100%; margin: 0px;'>
+           </label>
                 ${item}
                 <i class='fa-regular fa-pen-to-square' onclick='redigera("${day}", ${index})'></i>
                 <i class='fa-solid fa-trash' onclick='taBort("${day}", ${index})'></i>
             </li>
         `;
+        ;
     });
     document.getElementById(`${day.toLowerCase()}Out`).innerHTML = output;
 }

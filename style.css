@@ -83,7 +83,7 @@ background-color: #bfcfbe;
     background-color: white;
     margin: 30px;
     display: flex;
-    height: 150px;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
     justify-content: center;
@@ -119,6 +119,10 @@ button:hover {
     margin-top: 10px;
     margin-left: 45%;
 }
+.weekAddBtn {
+    padding: 10px;
+}
+
 .card2 {
     background-color: white;
     margin: 50px;
@@ -131,11 +135,13 @@ button:hover {
 }
 
 table {
-    table-layout: auto; /* eller 'fixed' om du vill ha strikt kontroll */
+    table-layout: auto; 
     width: 100%; 
-    border-collapse: collapse; /* Valfritt, tar bort mellanrum mellan celler */  
 }
 
+.todayTable {
+    border-collapse: collapse; 
+}
 
 td, th {
     padding: 10px;
@@ -143,16 +149,28 @@ td, th {
     border-color: #bfcfbe;;
 
 }
-.tdCheck {
-    width: 1%; /* Gör kolumnen så liten som möjligt */
-    padding: 0; /* Tar bort all padding */
-    margin: 0; /* Tar bort margin */
-    text-align: center; /* Centrerar innehållet (valfritt) */
-    white-space: nowrap; /* Förhindrar att innehållet bryts */
+
+.weekTable td {
+    border: solid;
+    border-color: #bfcfbe;
+    border-radius: 10px;
+  
+}
+.weekOutput {
+    padding: 0;
+}
+tr.dragged {
+    opacity: 0.5;
+}
+
+tr.drop-target {
+    border: 2px dashed #000;
 }
 
 i {
     margin-left: 15px;
+    color: #666;
+    cursor: pointer;
 }
 
 i:hover {
@@ -163,12 +181,30 @@ opacity: 50%;
     height: 20px;
 }
 ul {
-    list-style: none;
-
+    list-style: none; /* Ta bort standard bullets */
+    margin: 0;
+    padding: 0;
 }
+
+li {
+    display: flex;
+    align-items: center; /* Centrera vertikalt */
+    padding: 10px 5px; /* Skapa lite avstånd mellan listobjekt */
+    gap: 10px; /* Avstånd mellan checkbox och text */
+}
+
+li input[type="checkbox"] {
+    margin-right: 10px; /* Lite avstånd mellan checkbox och text */
+}
+
+li label {
+    flex-grow: 1; /* Gör så att texten fyller utrymmet */
+    margin: 0;
+    text-align: left; /* Säkerställ att texten är vänsterjusterad */
+}
+
 .weekInput {
     padding: 10px;
-    
     width: 60%;
 }
 .addBtn2 {

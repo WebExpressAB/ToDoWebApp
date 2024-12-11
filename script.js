@@ -95,30 +95,34 @@ function toggleMenu() {
   }
 
   //Skapar funktion för att kunna dra i sina todos och prioritera de 
-let draggedIndex = null;
+  let draggedIndex = null;
 
-function startDrag(event, index) {
-    draggedIndex = index;
-    event.dataTransfer.effectAllowed = "move";
-}
-
-function allowDrop(event) {
-    event.preventDefault();
-}
-
-function drop(event, targetIndex) {
-    event.preventDefault();
-
-    if (draggedIndex !== null && draggedIndex !== targetIndex) {
-        // Byt plats på uppgifterna
-        const temp = toDoToday[draggedIndex];
-        toDoToday[draggedIndex] = toDoToday[targetIndex];
-        toDoToday[targetIndex] = temp;
-
-        // Uppdatera listan
-        uppdateraOutput();
-
-        // Nollställ drag-index
-        draggedIndex = null;
-    }
-}
+  function startDrag(event, index) {
+      draggedIndex = index;
+      event.dataTransfer.effectAllowed = "move";
+  }
+  
+  function allowDrop(event) {
+      event.preventDefault();
+  }
+  
+  function drop(event, targetIndex) {
+      event.preventDefault();
+  
+      if (draggedIndex !== null && draggedIndex !== targetIndex) {
+          // Hämta det dragna elementet
+          const draggedItem = toDoToday[draggedIndex];
+          
+          // Ta bort det dragna elementet från sin nuvarande position
+          toDoToday.splice(draggedIndex, 1);
+          
+          // Infoga det dragna elementet vid den nya positionen
+          toDoToday.splice(targetIndex, 0, draggedItem);
+  
+          // Uppdatera listan
+          uppdateraOutput();
+  
+          // Nollställ drag-index
+          draggedIndex = null;
+      }
+  }

@@ -28,8 +28,8 @@
       
       </div>
     </div>
-    <div class="card2">
-       <table>
+    <div class="card2" >
+       <table class="weekTable">
         <thead>
             <td>Monday</td>
             <td>Tuesday</td>
@@ -39,23 +39,25 @@
         </thead>
         <tbody>
             <tr>
-            <td>  <input type="text" id="monInput"  class="weekInput" placeholder="Title...">
-                <button onclick="laggaTill('Monday', 'monInput')" >Add</button>
+            <td>  
+                <input type="text" id="monInput"  class="weekInput" placeholder="Title...">
+                <button onclick="laggaTill('Monday', 'monInput')" class="weekAddBtn">Add</button>
+                <button id="sparaKnapp" onclick="sparaRedigering('Monday', 'monInput')" style="display: none;">Save edit</button>
             <td><input type="text" id="tuesInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Tuesday', 'tuesInput')" >Add</button></td>
+                <button onclick="laggaTill('Tuesday', 'tuesInput')" class="weekAddBtn">Add</button></td>
             <td><input type="text" id="wedInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Wednesday', 'wedInput')">Add</button></td>
+                <button onclick="laggaTill('Wednesday', 'wedInput')" class="weekAddBtn">Add</button></td>
             <td><input type="text" id="thursInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Thursday', 'thursInput')">Add</button></td>
+                <button onclick="laggaTill('Thursday', 'thursInput')" class="weekAddBtn">Add</button></td>
             <td><input type="text" id="friInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Friday', 'friInput')">Add</button></td>
+                <button onclick="laggaTill('Friday', 'friInput')" class="weekAddBtn">Add</button></td>
         </tr>
         <tr>
-            <td><ul id="mondayOut"></ul></td>
-            <td><ul id="tuesdayOut"></ul></td>
-            <td><ul id="wednesdayOut"></ul></td>
-            <td><ul id="thursdayOut"></ul></td>
-            <td><ul id="fridayOut"></ul></td>
+            <td class="weekOutput" ><ul id="mondayOut"></ul></td>
+            <td class="weekOutput"><ul id="tuesdayOut"></ul></td>
+            <td class="weekOutput"><ul id="wednesdayOut"></ul></td>
+            <td class="weekOutput"><ul id="thursdayOut"></ul></td>
+            <td class="weekOutput"><ul id="fridayOut"></ul></td>
         </tr>
         </tbody>
        </table>
