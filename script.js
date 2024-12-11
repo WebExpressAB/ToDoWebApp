@@ -17,9 +17,9 @@ function uppdateraOutput() {
     for (var i = 0; i < toDoToday.length; i++) {
         output +=
             "<tr draggable='true' ondragstart='startDrag(event, " + i + ")' ondragover='allowDrop(event)' ondrop='drop(event, " + i + ")'>" +
-            "<td>" +
-            "<label><input type='checkbox'>" +
-           "</label>" + toDoToday[i] +
+            "<td class='tdCheck'>" +
+            "<label><input type='checkbox' style='width: 100%; margin: 10px;'>" +
+           "</label>" + "</td>" + "<td>" + toDoToday[i] +
             "</td>" +
             "<td>" +
             "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" + " " +
@@ -47,7 +47,7 @@ function toggleMenu() {
     sidenav.classList.toggle('active');
 }
 
-  // Funktion för att lägga till upp
+  // Funktion för att lägga till 
   function laggaTill() {
     let myInput = document.getElementById("myInput").value;
     if (myInput.length !== 0) {
@@ -71,12 +71,12 @@ function toggleMenu() {
     sparaTillLocalStorage(); // Spara till localStorage
 }
   
-  // Funktion för att redigera ett namn
+  // Funktion för att redigera en task
   function redigera(id) {
     console.log("Redigera " + id);
-    // om funktionen körs ändras id på det valda namnet till -1 för att man ska veta att det är ett redigerat index
+    // om funktionen körs ändras id på den valda tasken till -1 för att man ska veta att det är ett redigerat index
     redigeradIndex = id;
-    // Ladda det redigerade namnet i inputfältet
+    // Ladda den redigerade tasken i inputfältet
     document.getElementById("myInput").value = toDoToday[id];
     // Visa "Spara"-knappen för att spara ändringar
     document.getElementById("sparaKnapp").style.display = "inline-block";

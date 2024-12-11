@@ -103,7 +103,7 @@ button {
     padding: 15px;
     border-radius: 5px;
     border: solid;
-    border-color: #bfcfbe;;
+    border-color: #bfcfbe;
     background-color: white;
     box-shadow: 4px 4px 5px rgba(166, 166, 166, 0.287);
 
@@ -129,16 +129,26 @@ button:hover {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 
 }
+
 table {
-    width: 100%;
-   
+    table-layout: auto; /* eller 'fixed' om du vill ha strikt kontroll */
+    width: 100%; 
+    border-collapse: collapse; /* Valfritt, tar bort mellanrum mellan celler */  
 }
+
 
 td, th {
     padding: 10px;
-    border: 1px solid #bfcfbe;
-    border-radius: 10px;
+    border-bottom: solid;
+    border-color: #bfcfbe;;
 
+}
+.tdCheck {
+    width: 1%; /* Gör kolumnen så liten som möjligt */
+    padding: 0; /* Tar bort all padding */
+    margin: 0; /* Tar bort margin */
+    text-align: center; /* Centrerar innehållet (valfritt) */
+    white-space: nowrap; /* Förhindrar att innehållet bryts */
 }
 
 i {
