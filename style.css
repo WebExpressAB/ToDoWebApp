@@ -176,6 +176,10 @@ i {
 i:hover {
 opacity: 50%;
 }
+
+.ikoner {
+    text-align: right;
+}
 .myCheck {
     width: 20px;
     height: 20px;

@@ -21,7 +21,7 @@ function uppdateraOutput() {
             "<label><input type='checkbox' style='width: 100%; margin: 10px;'>" +
            "</label>" + "</td>" + "<td>" + toDoToday[i] +
             "</td>" +
-            "<td>" +
+            "<td class='ikoner'>" +
             "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" + " " +
             "<i class='fa-solid fa-trash' onclick='taBort(" + i + ")'></i>" +
             "</td>" +
