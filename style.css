@@ -309,11 +309,17 @@ li {
 }
 
 @media screen and (max-width: 650px) {
-    .card1, .card2, .cardWeek {
+    .card1, .card2 {
         margin: 2px;
         padding: 20px;
         box-shadow: none;
         margin-bottom: 20px;
+    }
+    .cardWeek{
+        padding: 0;
+    }
+    .day {
+        box-shadow: none;
     }
     
     button {
