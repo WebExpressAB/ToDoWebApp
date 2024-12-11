@@ -5,6 +5,11 @@ var date = now.toLocaleDateString(); // Ger endast datumet
 // Lägg till datumet i HTML
 document.getElementById("datetime").innerHTML = date;
 
+function toggleMenu() {
+    console.log("Hamburger clicked!");
+    const sidenav = document.querySelector('.sidenav');
+    sidenav.classList.toggle('active');
+}
 
 let toDoLists = {
     Monday: ["Städa", "Plugga"],
@@ -52,6 +57,19 @@ function redigera(day, index) {
     uppdateraOutput(day);
     sparaTillLocalStorage(); // Spara ändringarna
 }
+
+  //Funktion för att nollställa lista
+  function rensa() {
+    //Funktionen uppdaterar arrayen till en tom array
+    toDoLists = {
+        Monday: [],
+        Tuesday: [],
+        Wednesday: [],
+        Thursday: [],
+        Friday: []
+    }
+    uppdateraOutput();
+  }
 
 function sparaTillLocalStorage() {
     localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
