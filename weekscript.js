@@ -18,8 +18,7 @@ function uppdateraOutput(day) {
     let output = "";
     toDoLists[day].forEach((item, index) => {
         output += `
-            <li><label><input type='checkbox' style='width: 100%; margin: 0px;'>
-           </label>
+            <li><input type='checkbox'>
                 ${item}
                 <i class='fa-regular fa-pen-to-square' onclick='redigera("${day}", ${index})'></i>
                 <i class='fa-solid fa-trash' onclick='taBort("${day}", ${index})'></i>
@@ -53,7 +52,6 @@ function redigera(day, index) {
     uppdateraOutput(day);
     sparaTillLocalStorage(); // Spara ändringarna
 }
-
 
 function sparaTillLocalStorage() {
     localStorage.setItem("toDoLists", JSON.stringify(toDoLists));

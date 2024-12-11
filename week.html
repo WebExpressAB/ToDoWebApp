@@ -28,41 +28,44 @@
       
       </div>
     </div>
-    <div class="card2" >
-       <table class="weekTable">
-        <thead>
-            <td>Monday</td>
-            <td>Tuesday</td>
-            <td>Wednesday</td>
-            <td>Thursday</td>
-            <td>Friday</td>
-        </thead>
-        <tbody>
-            <tr>
-            <td>  
-                <input type="text" id="monInput"  class="weekInput" placeholder="Title...">
+    <div class="card2">
+        <div class="weekContainer">
+            <div class="day"><h2 style="text-align: center;">Monday</h2>
+                <input type="text" id="monInput" class="weekInput" placeholder="Task...">
                 <button onclick="laggaTill('Monday', 'monInput')" class="weekAddBtn">Add</button>
                 <button id="sparaKnapp" onclick="sparaRedigering('Monday', 'monInput')" style="display: none;">Save edit</button>
-            <td><input type="text" id="tuesInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Tuesday', 'tuesInput')" class="weekAddBtn">Add</button></td>
-            <td><input type="text" id="wedInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Wednesday', 'wedInput')" class="weekAddBtn">Add</button></td>
-            <td><input type="text" id="thursInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Thursday', 'thursInput')" class="weekAddBtn">Add</button></td>
-            <td><input type="text" id="friInput" placeholder="Title..." class="weekInput">
-                <button onclick="laggaTill('Friday', 'friInput')" class="weekAddBtn">Add</button></td>
-        </tr>
-        <tr>
-            <td class="weekOutput" ><ul id="mondayOut"></ul></td>
-            <td class="weekOutput"><ul id="tuesdayOut"></ul></td>
-            <td class="weekOutput"><ul id="wednesdayOut"></ul></td>
-            <td class="weekOutput"><ul id="thursdayOut"></ul></td>
-            <td class="weekOutput"><ul id="fridayOut"></ul></td>
-        </tr>
-        </tbody>
-       </table>
+                <ul id="mondayOut" class="weekOutput"></ul>
+            </div>
+    
+            <div class="day"><h2 style="text-align: center;">Tuesday</h2>
+                <input type="text" id="tuesInput" class="weekInput" placeholder="Task...">
+                <button onclick="laggaTill('Tuesday', 'tuesInput')" class="weekAddBtn">Add</button>
+                <button id="sparaKnapp" onclick="sparaRedigering('Tuesday', 'tuesInput')" style="display: none;">Save edit</button>
+                <ul id="tuesdayOut" class="weekOutput"></ul>
+            </div>
+    
+            <div class="day"><h2 style="text-align: center;">Wednesday</h2>
+                <input type="text" id="wedInput" class="weekInput" placeholder="Task...">
+                <button onclick="laggaTill('Wednesday', 'wedInput')" class="weekAddBtn">Add</button>
+                <button id="sparaKnapp" onclick="sparaRedigering('Wednesday', 'wedInput')" style="display: none;">Save edit</button>
+                <ul id="wednesdayOut" class="weekOutput"></ul>
+            </div>
+    
+            <div class="day"><h2 style="text-align: center;">Thursday</h2>
+                <input type="text" id="thursInput" class="weekInput" placeholder="Task...">
+                <button onclick="laggaTill('Thursday', 'thursInput')" class="weekAddBtn">Add</button>
+                <button id="sparaKnapp" onclick="sparaRedigering('Thursday', 'thursInput')" style="display: none;">Save edit</button>
+                <ul id="thursdayOut" class="weekOutput"></ul>
+            </div>
+    
+            <div class="day"><h2 style="text-align: center;">Friday</h2>
+                <input type="text" id="friInput" class="weekInput" placeholder="Task...">
+                <button onclick="laggaTill('Friday', 'friInput')" class="weekAddBtn">Add</button>
+                <button id="sparaKnapp" onclick="sparaRedigering('Friday', 'friInput')" style="display: none;">Save edit</button>
+                <ul id="fridayOut" class="weekOutput"></ul>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
 <script src="weekscript.js" type="text/javascript"></script>
 </html>
