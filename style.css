@@ -217,27 +217,12 @@ li {
     display: flex;
     align-items: center; /* Centrera vertikalt */
     padding: 10px 5px; /* Skapa lite avstånd mellan listobjekt */
+    margin: 10px;
     gap: 10px; /* Avstånd mellan checkbox och text */
+    border-bottom: solid;
+    border-color: #bfcfbe;
 }
 
-li input[type="checkbox"] {
-    margin-right: 10px; /* Lite avstånd mellan checkbox och text */
-}
-
-li label {
-    flex-grow: 1; /* Gör så att texten fyller utrymmet */
-    margin: 0;
-    text-align: left; /* Säkerställ att texten är vänsterjusterad */
-}
-
-.card2 ul, .card2 li {
-    margin:0;
-   padding:0;
-}
-
-.addBtn2 {
-    padding: 10px;
-}
 /* Visa hamburgermenyn och dölj sidomenyn på mindre skärmar */
 @media screen and (max-width: 950px) {
     .sidenav {
