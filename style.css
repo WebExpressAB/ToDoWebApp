@@ -228,6 +228,10 @@ li {
     gap: 10px; /* Avstånd mellan checkbox och text */
     border-bottom: solid;
     border-color: #bfcfbe;
+    
+}
+.sparaKnappWeek {
+    padding: 5px;
 }
 @media screen and (max-width: 1450px) {
     .weekContainer {
