@@ -54,6 +54,14 @@ body {
   .sidenav a:hover {
    opacity: 70%;
   }
+
+  .sidenav a.active {
+
+    border: solid;
+    border-color: yellow;
+
+
+}
   /* Dölj hamburgermenyn på stora skärmar */
 .hamburger {
     display: none;
@@ -204,7 +212,7 @@ td, th {
 
 .weekInput {
     margin-bottom: 10px;
-    padding: 2px;
+    padding: 5px;
     width: 73%;
 }
 
