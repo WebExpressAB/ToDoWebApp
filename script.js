@@ -19,11 +19,16 @@ function uppdateraOutput() {
             "<tr draggable='true' ondragstart='startDrag(event, " + i + ")' ondragover='allowDrop(event)' ondrop='drop(event, " + i + ")'>" +
             "<td class='tdCheck'>" +
             "<label><input type='checkbox' style='width: 100%; margin: 10px;'>" +
-           "</label>" + "</td>" + "<td>" + toDoToday[i] +
+           "</label>" + "</td>" + "<td>" + toDoToday[i] +  "<div class='arrow-buttons'>" +
+           "<button onclick='moveUp(" + i + ")'><i class='fa-solid fa-arrow-up'></i></button> " + 
+           "<!-- Upp pil -->" +
+           "<button onclick='moveDown(" + i + ")'><i class='fa-solid fa-arrow-down'></i></button>" + 
+           "<!-- Ner pil -->" +
+           "</div>" +
             "</td>" +
             "<td class='ikoner'>" +
             "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" + " " +
-            "<i class='fa-solid fa-trash' onclick='taBort(" + i + ")'></i>" +
+            "<i class='fa-solid fa-trash' onclick='taBort(" + i + ")'></i>" + 
             "</td>" +
             "</tr>";
     }
@@ -126,3 +131,25 @@ function toggleMenu() {
           draggedIndex = null;
       }
   }
+// Funktion för att uppdatera listan med pilar för att flytta upp/ned
+function moveUp(index) {
+    if (index > 0) {
+        // Byt plats på aktuellt element och föregående
+        var temp = toDoToday[index];
+        toDoToday[index] = toDoToday[index - 1];
+        toDoToday[index - 1] = temp;
+        uppdateraOutput();
+        sparaTillLocalStorage();
+    }
+}
+
+function moveDown(index) {
+    if (index < toDoToday.length - 1) {
+        // Byt plats på aktuellt element och nästa
+        var temp = toDoToday[index];
+        toDoToday[index] = toDoToday[index + 1];
+        toDoToday[index + 1] = temp;
+        uppdateraOutput();
+        sparaTillLocalStorage();
+    }
+}

@@ -1,6 +1,6 @@
 /*Bakgrund för sidan*/
 body {
-    background-color: #ebefe2;
+    background-color: rgb(227, 247, 255);
   }
 
   /*Sidebar*/
@@ -11,7 +11,7 @@ body {
     z-index: 1; 
     top: 0;
     left: 0;
-    background-color: #bfcfbe;
+    background-color: rgb(0,117,160);
     overflow-x: hidden;
     padding-top: 30px;
     box-shadow: 5px 4px 10px rgba(166, 166, 166, 0.287);
@@ -31,6 +31,7 @@ body {
     border-width: thin;
     background-color: #ffe6e0;
     margin: 5px;
+    margin-left: 10px;
   }
   
   /*Länkar i sidebar*/
@@ -47,6 +48,7 @@ body {
     border-width: thin;
     background-color: white;
     margin: 5px;
+    margin-left: 10px;
   }
  
   .sidenav a:hover {
@@ -94,17 +96,21 @@ input {
     padding: 15px;
     border-radius: 5px;
     border: solid;
-    border-color: #bfcfbe;
+    border-color: rgb(159, 194, 207);
 }
 .myInput {
     width: 500px;
+  }
+
+  .arrow-buttons {
+    display: none;
   }
 
 button {
     padding: 15px;
     border-radius: 5px;
     border: solid;
-    border-color: #bfcfbe;
+    border-color: rgb(159, 194, 207);
     background-color: white;
     box-shadow: 4px 4px 5px rgba(166, 166, 166, 0.287);
 
@@ -154,7 +160,7 @@ table {
 td, th {
     padding: 10px;
     border-bottom: solid;
-    border-color: #bfcfbe;;
+    border-color: rgb(159, 194, 207);
 
 }
 
@@ -171,7 +177,7 @@ td, th {
     padding: 10px;
     border: solid;
     border-radius: 10px;
-    border-color: #bfcfbe;
+    border-color: rgb(159, 194, 207);
 }
 
 .weekInput {
@@ -227,7 +233,7 @@ li {
     margin: 10px;
     gap: 10px; /* Avstånd mellan checkbox och text */
     border-bottom: solid;
-    border-color: #bfcfbe;
+    border-color: rgb(159, 194, 207);
     
 }
 .sparaKnappWeek {
@@ -332,5 +338,13 @@ li {
     .weekInput {
         width: 75%;
     }
+      /* Visa pilar för att ändra ordning */
+  .arrow-buttons {
+    display: inline-block;
+    margin-left: 5px;
+  }
+  i {
+    margin-left: 0px;
+}
 
 }

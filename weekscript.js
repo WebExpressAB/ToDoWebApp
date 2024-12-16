@@ -27,10 +27,17 @@ function uppdateraOutput(day) {
                 ondragstart="startDrag(event, '${day}', ${index})" 
                 ondragover="allowDrop(event)" 
                 ondrop="drop(event, '${day}', ${index})">
-                <input type='checkbox'>
+           
+              <input type='checkbox'>
                 ${item}
                 <i class='fa-regular fa-pen-to-square' onclick='redigera("${day}", ${index})'></i>
                 <i class='fa-solid fa-trash' onclick='taBort("${day}", ${index})'></i>
+                         <!-- För att visa pilar på små skärmar -->
+                <div class="arrow-buttons">
+                    <button onclick="moveUp('${day}', ${index})"><i class='fa-solid fa-arrow-up'></i></button> <!-- Upp pil -->
+                    <button onclick="moveDown('${day}', ${index})"><i class='fa-solid fa-arrow-down'></i></button> <!-- Ner pil -->
+                </div>
+            
             </li>
         `;
     });
@@ -170,5 +177,24 @@ function drop(event, day, targetIndex) {
         // Nollställ drag-data
         draggedIndex = null;
         draggedDay = null;
+    }
+}
+
+// Skapa funktioner för att ändra ordningen via pilar
+function moveUp(day, index) {
+    if (index > 0) {
+        const item = toDoLists[day].splice(index, 1)[0]; // Ta bort objektet
+        toDoLists[day].splice(index - 1, 0, item); // Lägg till objektet före föregående
+        uppdateraOutput(day);
+        sparaTillLocalStorage();
+    }
+}
+
+function moveDown(day, index) {
+    if (index < toDoLists[day].length - 1) {
+        const item = toDoLists[day].splice(index, 1)[0]; // Ta bort objektet
+        toDoLists[day].splice(index + 1, 0, item); // Lägg till objektet efter nästa
+        uppdateraOutput(day);
+        sparaTillLocalStorage();
     }
 }
