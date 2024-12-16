@@ -15,38 +15,24 @@
     <a href="https://webexpressab.github.io/ToDoWebApp/week.html">This week</a>
     <a href="https://webexpressab.github.io/ToDoWebApp/projects.html">Projects</a>
   </div>
-  
-  <div class="main">
-    <div class="card1">
-        <div id="myDIV" class="header">
-            <h1>My Todo List</h1>
-            <input type="text" id="myInput" class="myInput" placeholder="Task...">
-            <button id="addBtn" class="addBtn" onclick="laggaTill()">Add</button>
-            <button id="sparaKnapp" onclick="sparaRedigering()" style="display: none;">Save edit</button>
-          </div>
-    </div>
 
     <!-- Hamburger menu button -->
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
     </div>
+    <div class="main">
+    <div class="card1">
+        <div id="myDIV" class="header">
+            <h1>Projects</h1>
+            <input type="text" id="myInput" class="myInput" placeholder="Project name">
+            <button onclick="laggaTill()">Create project</button>
 
-
-    <div class="card2">
-        <h2>Todays todos</h2>
-          <table class="todayTable">
-            <tbody id="output"></tbody>
-          </table>
-          <button
-          type="button"
-          onclick="rensa()"
-          class="btnRensa"
-          id="btnRensa"
-        >
-          Clear list
-        </button>
+          </div>
     </div>
-  </div>
+    <div id="output"> 
+    
+    </div>
+</div>
 </body>
-<script src="script.js" type="text/javascript"></script>
+<script src="projectScript.js" type="text/javascript"></script>
 </html>
