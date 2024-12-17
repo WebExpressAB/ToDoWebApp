@@ -54,7 +54,7 @@ function uppdateraOutput2() {
                  <i class='fa-solid fa-trash Kasta' onClick='taBortProjekt(${i})'></i>
                  <p class='KastaHide'>Delete project</p>
                 <h2>${project.name || "Nytt projekt"}</h2>
-                <input type='text' id='projectInput${i}' placeholder='Task...'>
+                <input type='text' id='projectInput${i}' class='projectInput' placeholder='Task...'>
                 <button onclick='laggaTillProjectTask(${i})'>Add Task</button>
                 <ul id='outputProject${i}'>
                     ${getTasksHTML(i)}

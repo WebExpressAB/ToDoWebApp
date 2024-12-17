@@ -114,7 +114,9 @@ input {
   .arrow-buttons {
     display: none;
   }
-
+.projectInput {
+    width: 77%;
+}
 button {
     padding: 15px;
     border-radius: 5px;
@@ -297,6 +299,9 @@ h1 {
     }
     .weekInput {
         width: 90%;
+    }
+    .projectInput {
+        width: 50%;
     }
     .cardWeek {
         background-color: transparent;
