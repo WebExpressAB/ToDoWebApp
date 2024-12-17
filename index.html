@@ -19,19 +19,7 @@
       <a href="https://webexpressab.github.io/ToDoWebApp/projects.html" class="sideA">Projects</a>
   </div>
   
-  <div class="main">
-    <div class="card1">
-        <div id="myDIV" class="header">
-            <h1>My Todo List</h1>
-            <input type="text" id="myInput" class="myInput" placeholder="Task...">
-            <button id="addBtn" class="addBtn" onclick="laggaTill()">Add</button>
-            <button id="sparaKnapp" onclick="sparaRedigering()" style="display: none;">Save edit</button>
-  
-
-
-          </div>
-    </div>
-
+  <div class="main1">
     <!-- Hamburger menu button -->
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
         <i class="fas fa-bars"></i>
@@ -39,6 +27,12 @@
 
 
     <div class="card2">
+      <div id="myDIV" class="header">
+        <h1>My Todo List</h1>
+        <input type="text" id="myInput" class="myInput" placeholder="Task...">
+        <button id="addBtn" class="addBtn" onclick="laggaTill()">Add</button>
+        <button id="sparaKnapp" onclick="sparaRedigering()" style="display: none;">Save edit</button>
+      </div>
         <h2>Todays todos</h2>
           <table class="todayTable">
             <tbody id="output"></tbody>

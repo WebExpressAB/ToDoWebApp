@@ -108,7 +108,7 @@ input {
     border-color: rgb(159, 194, 207);
 }
 .myInput {
-    width: 500px;
+    width: 50%;
   }
 
   .arrow-buttons {
@@ -141,12 +141,16 @@ button:hover {
 
 .card2 {
     background-color: white;
-    margin: 50px;
+    margin: 25%;
     margin-top: 20px;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
     font-family: "DM Sans", sans-serif;
+    width: 50%;
+}
+.card2 .header {
+    text-align: center;
 }
 
 .cardWeek {
@@ -351,7 +355,6 @@ h1 {
         margin-left: 0;
     }
     .myInput {
-        width: 100%;
         margin-bottom: 10px;
     }
     .card1, .card2, .cardWeek, .card4 {
@@ -386,7 +389,7 @@ h1 {
 }
 
 @media screen and (max-width: 650px) {
-    .card1, .card2 {
+    .card1 {
         margin: 2px;
         padding: 20px;
         box-shadow: none;
@@ -406,6 +409,10 @@ h1 {
     .weekInput {
         width: 75%;
     }
-
+.card2 {
+    width: 85%;
+    box-shadow: none;
+    margin-top: 60px;
+}
 
 }
