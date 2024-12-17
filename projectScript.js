@@ -1,155 +1,154 @@
-//Lägga till så att dagens datum visas i sidebaren
-var now = new Date();
-var date = now.toLocaleDateString(); // Ger endast datumet
+// Lägga till så att dagens datum visas i sidebaren
+document.getElementById("datetime").innerHTML = new Date().toLocaleDateString();
 
-// Lägg till datumet i HTML
-document.getElementById("datetime").innerHTML = date;
-
-//Funktion för hamburgermeny
+// Funktion för hamburgermeny
 function toggleMenu() {
-    console.log("Hamburger clicked!");
-    const sidenav = document.querySelector('.sidenav');
-    sidenav.classList.toggle('active');
+    document.querySelector('.sidenav').classList.toggle('active');
 }
 
-// Hämta alla länkar med klassen "sideA"
+// Hämta alla länkar med klassen "sideA" och lägg till active-hantering
 var sideLinks = document.getElementsByClassName("sideA");
-
-// Loop genom alla länkar
 for (var i = 0; i < sideLinks.length; i++) {
     sideLinks[i].addEventListener("click", function(event) {
-        // Förhindra att länken faktiskt följer sin standardhandling (navigerar)
         event.preventDefault();
-
-        // Ta bort 'active' från alla länkar
-        for (var j = 0; j < sideLinks.length; j++) {
-            sideLinks[j].classList.remove("active");
-        }
-        
-        // Lägg till 'active' på den länk som klickades på
+        Array.from(sideLinks).forEach(link => link.classList.remove("active"));
         this.classList.add("active");
-
-        // Navigera till den länkade sidan efter att ha lagt till 'active'
         window.location.href = this.href;
     });
 }
+
 var projects = []; // Lista på alla projekt
 
-// Läs in vid sidans start innehåll från localStorage
+// Läs in projekt från localStorage vid start
 lasFranLocalStorage();
 uppdateraOutput2();
 
-// Läs in vid sidans start innehåll från localStorage
 function lasFranLocalStorage() {
     const sparadData = localStorage.getItem("projects");
-    if (sparadData) {
-        projects = JSON.parse(sparadData);
-        // Validera och korrigera varje projekt
-        projects = projects.map(project => {
-            if (typeof project === "string") {
-                return { name: project, tasks: [] }; // Konvertera sträng till korrekt objekt
-            } else if (typeof project.name !== "string") {
-                return { name: "Nytt projekt", tasks: [] }; // Om name är ogiltigt, sätt fallback
-            }
-            return project; // Lämna korrekt projekt oförändrat
-        });
-    } else {
-        projects = []; // Om ingen sparad data finns, börja med en tom array
-    }
+    projects = sparadData ? JSON.parse(sparadData).map(project => 
+        typeof project === "string" ? { name: project, tasks: [] } : project
+    ) : [];
 }
-console.log(projects);
 
-// Funktion för att spara till localStorage
+// Spara till localStorage
 function sparaTillLocalStorage() {
     localStorage.setItem("projects", JSON.stringify(projects));
 }
 
-// Funktion för att skapa och lägga till ett nytt projekt
+// Lägg till ett nytt projekt
 function laggaTill() {
-    let projectName = document.getElementById("myInput").value; // Hämta värdet från inputfältet
-    if (projectName.length !== 0) {
-        // Skapa ett projekt med namnet från input och en tom tasks-array
-        projects.push({
-            name: projectName, // Här används input-värdet som projektets namn
-            tasks: [] 
-        });
-        document.getElementById("myInput").value = ""; // Rensa inputfältet
-        uppdateraOutput2(); // Uppdatera listan med projekt
-        sparaTillLocalStorage(); // Spara till localStorage
+    const projectName = document.getElementById("myInput").value.trim();
+    if (projectName) {
+        projects.push({ name: projectName, tasks: [] });
+        document.getElementById("myInput").value = "";
+        uppdateraOutput2();
+        sparaTillLocalStorage();
     }
 }
 
-// Funktion för att uppdatera outputen av alla projekt
+// Uppdatera outputen av alla projekt
 function uppdateraOutput2() {
-    var output2 = "";
-    for (var i = 0; i < projects.length; i++) {
-        let projectName = projects[i].name || "Nytt projekt"; // Sätt fallback om name saknas
-        output2 += `
-            <div class='card4'>
-                <div class='projectCol'>
-                    <h2>${projectName}</h2>
-                    <input type='text' id='projectInput${i}' placeholder='Task...'>
-                    <button onclick='laggaTillProjectTask(${i})'>Add Task</button>
-                    <ul id='outputProject${i}'>
-                        ${getTasksHTML(i)}
-                    </ul>
-                </div>
+    document.getElementById("output2").innerHTML = projects.map((project, i) => `
+        <div class='card4'>
+            <div class='projectCol'>
+                <h2>${project.name || "Nytt projekt"}</h2>
+                <input type='text' id='projectInput${i}' placeholder='Task...'>
+                <button onclick='laggaTillProjectTask(${i})'>Add Task</button>
+                <ul id='outputProject${i}'>
+                    ${getTasksHTML(i)}
+                </ul>
             </div>
-        `;
-    }
-    document.getElementById("output2").innerHTML = output2;
+        </div>
+    `).join("");
 }
 
-
-// Funktion för att skapa HTML för tasks i varje projekt
+// Skapa HTML för tasks i ett projekt
 function getTasksHTML(projectIndex) {
-    var taskHTML = "";
-    
-    // Kolla om projektet och tasks finns
-    if (projects[projectIndex] && Array.isArray(projects[projectIndex].tasks)) {
-        for (var j = 0; j < projects[projectIndex].tasks.length; j++) {
-            taskHTML += `
-                <li>
-                    <input type='checkbox'>
-                    ${projects[projectIndex].tasks[j]}
-                    <i class='fa-regular fa-pen-to-square' onclick='redigeraTask(${projectIndex}, ${j})'></i>
-                    <i class='fa-solid fa-trash' onclick='taBortTask(${projectIndex}, ${j})'></i>
-                </li>
-            `;
-        }
-    }
-    return taskHTML;
+    return projects[projectIndex]?.tasks.map((task, taskIndex) => `
+        <li draggable='true' 
+            ondragstart='startDrag(event, ${projectIndex}, ${taskIndex})' 
+            ondragover='allowDrop(event)' 
+            ondrop='drop(event, ${projectIndex}, ${taskIndex})'>
+            <input type='checkbox'>
+            ${task}
+            <div class='arrow-buttons'>
+                <button onclick='moveUp(${projectIndex}, ${taskIndex})'><i class='fa-solid fa-arrow-up'></i></button>
+                <button onclick='moveDown(${projectIndex}, ${taskIndex})'><i class='fa-solid fa-arrow-down'></i></button>
+            </div>
+            <i class='fa-regular fa-pen-to-square' onclick='redigeraTask(${projectIndex}, ${taskIndex})'></i>
+            <i class='fa-solid fa-trash' onclick='taBortTask(${projectIndex}, ${taskIndex})'></i>
+        </li>
+    `).join("") || "";
 }
 
-// Funktion för att lägga till en task till ett projekt
+
+// Lägg till en task till ett projekt
 function laggaTillProjectTask(projectIndex) {
-    console.log("projectIndex:", projectIndex);
-    console.log("projects:", projects);
-    console.log("projects[projectIndex]:", projects[projectIndex]);
-
-    let taskInput = document.getElementById(`projectInput${projectIndex}`).value;
-    if (taskInput.length !== 0) {
-        // Lägg till task till rätt projekt
+    const taskInput = document.getElementById(`projectInput${projectIndex}`).value.trim();
+    if (taskInput) {
         projects[projectIndex].tasks.push(taskInput);
-        document.getElementById(`projectInput${projectIndex}`).value = ""; // Rensa inputfältet
-        uppdateraOutput2(); // Uppdatera alla projekt
-        sparaTillLocalStorage(); // Spara till localStorage
+        document.getElementById(`projectInput${projectIndex}`).value = "";
+        uppdateraOutput2();
+        sparaTillLocalStorage();
     }
 }
 
-// Funktion för att ta bort en task från ett projekt
+
+// Ta bort en task från ett projekt
 function taBortTask(projectIndex, taskIndex) {
-    projects[projectIndex].tasks.splice(taskIndex, 1); // Ta bort tasken från listan
-    uppdateraOutput2(); // Uppdatera listan med projekt och tasks
-    sparaTillLocalStorage(); // Spara till localStorage
+    projects[projectIndex].tasks.splice(taskIndex, 1);
+    uppdateraOutput2();
+    sparaTillLocalStorage();
 }
 
-// Funktion för att redigera en task i ett projekt
+// Redigera en task i ett projekt
 function redigeraTask(projectIndex, taskIndex) {
-    let newTask = prompt("Edit task", projects[projectIndex].tasks[taskIndex]);
+    const newTask = prompt("Edit task", projects[projectIndex].tasks[taskIndex]);
     if (newTask !== null) {
-        projects[projectIndex].tasks[taskIndex] = newTask; // Uppdatera task
-        uppdateraOutput2(); // Uppdatera output
-        sparaTillLocalStorage(); // Spara till localStorage
+        projects[projectIndex].tasks[taskIndex] = newTask.trim();
+        uppdateraOutput2();
+        sparaTillLocalStorage();
+    }
+}
+
+// Drag & Drop-funktioner
+function startDrag(event, projectIndex, taskIndex) {
+    draggedTask = { projectIndex, taskIndex };
+    event.dataTransfer.effectAllowed = "move";
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event, targetProjectIndex, targetTaskIndex) {
+    event.preventDefault();
+    const { projectIndex, taskIndex } = draggedTask;
+
+    if (projectIndex === targetProjectIndex && taskIndex !== targetTaskIndex) {
+        const task = projects[projectIndex].tasks.splice(taskIndex, 1)[0];
+        projects[projectIndex].tasks.splice(targetTaskIndex, 0, task);
+        uppdateraOutput2();
+        sparaTillLocalStorage();
+    }
+    draggedTask = { projectIndex: null, taskIndex: null };
+}
+
+// Flytta upp och ned tasks
+function moveUp(projectIndex, taskIndex) {
+    if (taskIndex > 0) {
+        [projects[projectIndex].tasks[taskIndex], projects[projectIndex].tasks[taskIndex - 1]] = 
+        [projects[projectIndex].tasks[taskIndex - 1], projects[projectIndex].tasks[taskIndex]];
+        uppdateraOutput2();
+        sparaTillLocalStorage();
+    }
+}
+
+function moveDown(projectIndex, taskIndex) {
+    if (taskIndex < projects[projectIndex].tasks.length - 1) {
+        [projects[projectIndex].tasks[taskIndex], projects[projectIndex].tasks[taskIndex + 1]] = 
+        [projects[projectIndex].tasks[taskIndex + 1], projects[projectIndex].tasks[taskIndex]];
+        uppdateraOutput2();
+        sparaTillLocalStorage();
     }
 }

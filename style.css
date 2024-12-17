@@ -204,6 +204,7 @@ td, th {
     display: inline;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     padding: 20px;
     border: solid;
     border-radius: 10px;
@@ -333,7 +334,7 @@ select {
         width: 100%;
         margin-bottom: 10px;
     }
-    .card1, .card2, .cardWeek {
+    .card1, .card2, .cardWeek, .card4 {
         margin: 20px 10px;
         padding: 20px;
         height: 100%;
@@ -351,7 +352,17 @@ select {
     .weekInput {
         width: 85%;
     }
-
+    .card4 {
+        width: 90%;
+        box-shadow: none;
+    }
+    .arrow-buttons {
+        display: inline-block;
+        margin-left: 5px;
+      }
+      i {
+        margin-left: 0px;
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -361,9 +372,10 @@ select {
         box-shadow: none;
         margin-bottom: 20px;
     }
-    .cardWeek{
+    .cardWeek {
         padding: 0;
     }
+  
     .day {
         box-shadow: none;
     }
@@ -374,13 +386,6 @@ select {
     .weekInput {
         width: 75%;
     }
-      /* Visa pilar för att ändra ordning */
-  .arrow-buttons {
-    display: inline-block;
-    margin-left: 5px;
-  }
-  i {
-    margin-left: 0px;
-}
+
 
 }
