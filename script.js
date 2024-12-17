@@ -110,37 +110,70 @@ function toggleChecked(index) {
   }
 
   //Skapar funktion för att kunna dra i sina todos och prioritera de 
+  
   let draggedIndex = null;
+let touchStartIndex = null; // För att hålla reda på indexet där användaren började "dra"
 
-  function startDrag(event, index) {
-      draggedIndex = index;
-      event.dataTransfer.effectAllowed = "move";
-  }
+function startDrag(event, index) {
+    // Hantera både mus och touch
+    if (event.type === 'touchstart') {
+        touchStartIndex = index;
+    } else {
+        draggedIndex = index;
+    }
+    event.dataTransfer.effectAllowed = "move";
+}
+
+// Tillåt släpp på elementet
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+// Funktion för att hantera släppning
+function drop(event, targetIndex) {
+    event.preventDefault();
   
-  function allowDrop(event) {
-      event.preventDefault();
-  }
+    if (draggedIndex !== null && draggedIndex !== targetIndex) {
+        // Hämta det dragna elementet
+        const draggedItem = toDoToday[draggedIndex];
+        
+        // Ta bort det dragna elementet från sin nuvarande position
+        toDoToday.splice(draggedIndex, 1);
+        
+        // Infoga det dragna elementet vid den nya positionen
+        toDoToday.splice(targetIndex, 0, draggedItem);
   
-  function drop(event, targetIndex) {
-      event.preventDefault();
+        // Uppdatera listan
+        uppdateraOutput();
   
-      if (draggedIndex !== null && draggedIndex !== targetIndex) {
-          // Hämta det dragna elementet
-          const draggedItem = toDoToday[draggedIndex];
-          
-          // Ta bort det dragna elementet från sin nuvarande position
-          toDoToday.splice(draggedIndex, 1);
-          
-          // Infoga det dragna elementet vid den nya positionen
-          toDoToday.splice(targetIndex, 0, draggedItem);
+        // Nollställ drag-index
+        draggedIndex = null;
+    }
   
-          // Uppdatera listan
-          uppdateraOutput();
-  
-          // Nollställ drag-index
-          draggedIndex = null;
-      }
-  }
+    if (touchStartIndex !== null && touchStartIndex !== targetIndex) {
+        // Om vi hanterar touch-händelser
+        const draggedItem = toDoToday[touchStartIndex];
+        toDoToday.splice(touchStartIndex, 1);
+        toDoToday.splice(targetIndex, 0, draggedItem);
+        
+        // Uppdatera listan och nollställ touch-start-index
+        uppdateraOutput();
+        touchStartIndex = null;
+    }
+}
+
+// Hantera drag under rörelse på pekskärm (mobil)
+function handleTouchMove(event) {
+    event.preventDefault();
+    if (touchStartIndex !== null) {
+        // Här kan du lägga till logik för att visa en visuell indikator för dragning
+    }
+}
+
+// Använd touch-händelser i stället för mus-händelser för mobiler
+document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+
 // Funktion för att uppdatera listan med pilar för att flytta upp/ned
 function moveUp(index) {
     if (index > 0) {
