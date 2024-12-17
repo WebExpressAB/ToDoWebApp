@@ -51,12 +51,15 @@ function uppdateraOutput2() {
     document.getElementById("output2").innerHTML = projects.map((project, i) => `
         <div class='card4'>
             <div class='projectCol'>
+                 <i class='fa-solid fa-trash Kasta' onClick='taBortProjekt(${i})'></i>
+                 <p class='KastaHide'>Delete project</p>
                 <h2>${project.name || "Nytt projekt"}</h2>
                 <input type='text' id='projectInput${i}' placeholder='Task...'>
                 <button onclick='laggaTillProjectTask(${i})'>Add Task</button>
                 <ul id='outputProject${i}'>
                     ${getTasksHTML(i)}
                 </ul>
+               
             </div>
         </div>
     `).join("");
@@ -93,10 +96,16 @@ function laggaTillProjectTask(projectIndex) {
     }
 }
 
-
 // Ta bort en task från ett projekt
 function taBortTask(projectIndex, taskIndex) {
     projects[projectIndex].tasks.splice(taskIndex, 1);
+    uppdateraOutput2();
+    sparaTillLocalStorage();
+}
+
+//Ta bort ett projekt 
+function taBortProjekt(index) {
+    projects.splice(index, 1);
     uppdateraOutput2();
     sparaTillLocalStorage();
 }

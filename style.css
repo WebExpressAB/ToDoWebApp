@@ -210,6 +210,17 @@ td, th {
     border-radius: 10px;
     border-color: rgb(159, 194, 207);
 }
+.Kasta {
+    margin-left: 98%;
+}
+.KastaHide {
+    display: none;
+    margin-left: 92%;
+}
+.Kasta:hover + .KastaHide {
+    display: block;
+    color: red;
+}
 
 .weekInput {
     margin-bottom: 10px;
