@@ -1,125 +1,107 @@
-//Lägga till så att dagens datum visas i sidebaren
-var now = new Date();
-var date = now.toLocaleDateString(); // Ger endast datumet
+// Lägg till dagens datum i sidebaren
+document.getElementById("datetime").innerHTML = new Date().toLocaleDateString();
 
-// Lägg till datumet i HTML
-document.getElementById("datetime").innerHTML = date;
-
+// Hanterar meny-toggling
 function toggleMenu() {
-    console.log("Hamburger clicked!");
-    const sidenav = document.querySelector('.sidenav');
-    sidenav.classList.toggle('active');
+    document.querySelector('.sidenav').classList.toggle('active');
 }
 
+// Huvudobjekt för toDo-listor
 let toDoLists = {
-    Monday: ["Städa", "Plugga"],
-    Tuesday: ["Moppa", "Jobba"],
+    Monday: [],
+    Tuesday: [],
     Wednesday: [],
     Thursday: [],
     Friday: []
 };
 
+// Uppdatera listan för en specifik dag
 function uppdateraOutput(day) {
-    let output = "";
-    toDoLists[day].forEach((item, index) => {
-        output += `
-            <li draggable="true" 
-                ondragstart="startDrag(event, '${day}', ${index})" 
-                ondragover="allowDrop(event)" 
-                ondrop="drop(event, '${day}', ${index})">
-           
-              <input type='checkbox'>
-                ${item}
-                <i class='fa-regular fa-pen-to-square' onclick='redigera("${day}", ${index})'></i>
-                <i class='fa-solid fa-trash' onclick='taBort("${day}", ${index})'></i>
-                         <!-- För att visa pilar på små skärmar -->
-                <div class="arrow-buttons">
-                    <button onclick="moveUp('${day}', ${index})"><i class='fa-solid fa-arrow-up'></i></button> <!-- Upp pil -->
-                    <button onclick="moveDown('${day}', ${index})"><i class='fa-solid fa-arrow-down'></i></button> <!-- Ner pil -->
-                </div>
-            
-            </li>
-        `;
-    });
-    document.getElementById(`${day.toLowerCase()}Out`).innerHTML = output;
+    const list = toDoLists[day].map((item, index) => `
+        <li draggable="true" ondragstart="startDrag(event, '${day}', ${index})" 
+            ondragover="allowDrop(event)" ondrop="drop(event, '${day}', ${index})">
+            <input type="checkbox" ${item.checked ? "checked" : ""} 
+                onchange="toggleCheckbox('${day}', ${index}, this)">
+            ${item.task}
+            <i class='fa-regular fa-pen-to-square' onclick='redigera("${day}", ${index})'></i>
+            <i class='fa-solid fa-trash' onclick='taBort("${day}", ${index})'></i>
+            <div class="arrow-buttons">
+                <button onclick="moveUp('${day}', ${index})"><i class='fa-solid fa-arrow-up'></i></button>
+                <button onclick="moveDown('${day}', ${index})"><i class='fa-solid fa-arrow-down'></i></button>
+            </div>
+        </li>
+    `).join("");
+    document.getElementById(`${day.toLowerCase()}Out`).innerHTML = list;
 }
 
+// Lägg till en uppgift
 function laggaTill(day, inputId) {
-    let input = document.getElementById(inputId).value;
-    if (input) {
-        toDoLists[day].push(input);
-        document.getElementById(inputId).value = "";
-        uppdateraOutput(day);
-        sparaTillLocalStorage(); // Spara ändringarna
+    const input = document.getElementById(inputId);
+    if (input.value) {
+        toDoLists[day].push({ task: input.value, checked: false });
+        input.value = "";
+        sparaOchUppdatera(day);
     }
 }
 
+// Ta bort en uppgift
 function taBort(day, index) {
     toDoLists[day].splice(index, 1);
-    uppdateraOutput(day);
-    sparaTillLocalStorage(); // Spara ändringarna
+    sparaOchUppdatera(day);
 }
 
-//Funktion för att redigera task 
+// Hantera checkbox-status
+function toggleCheckbox(day, index, checkbox) {
+    toDoLists[day][index].checked = checkbox.checked;
+    sparaTillLocalStorage();
+}
+
+// Redigera en uppgift
 let redigeringsIndex = null;
 
 function redigera(day, index) {
-    // Fyll inputfältet med uppgiften som ska redigeras
-    let inputId = `${day.toLowerCase()}Input`;
-    document.getElementById(inputId).value = toDoLists[day][index];
-
-    // Spara redigeringsindex
+    const input = document.getElementById(`${day.toLowerCase()}Input`);
+    input.value = toDoLists[day][index].task;
     redigeringsIndex = index;
-
-    // Visa "Spara redigering"-knappen och dölj "Add"-knappen
-    let addButton = document.querySelector(`button[onclick*="laggaTill('${day}"]`);
-    let saveButton = document.querySelector(`button[onclick*="sparaRedigering('${day}"]`);
-    addButton.style.display = "none";
-    saveButton.style.display = "inline-block";
+    visaRedigeringsKnappar(day, true);
 }
+
 function sparaRedigering(day, inputId) {
-    let input = document.getElementById(inputId).value;
-    if (input && redigeringsIndex !== null) {
-        // Uppdatera det redigerade objektet
-        toDoLists[day][redigeringsIndex] = input;
+    const input = document.getElementById(inputId);
+    if (input.value && redigeringsIndex !== null) {
+        toDoLists[day][redigeringsIndex].task = input.value;
         redigeringsIndex = null;
-
-        // Rensa inputfältet
-        document.getElementById(inputId).value = "";
-
-        // Uppdatera listan och spara till localStorage
-        uppdateraOutput(day);
-        sparaTillLocalStorage();
-
-        // Återställ knappar
-        let addButton = document.querySelector(`button[onclick*="laggaTill('${day}"]`);
-        let saveButton = document.querySelector(`button[onclick*="sparaRedigering('${day}"]`);
-        addButton.style.display = "inline-block";
-        saveButton.style.display = "none";
+        visaRedigeringsKnappar(day, false);
+        sparaOchUppdatera(day);
     }
 }
 
-  //Funktion för att nollställa lista
-  function rensa() {
-    // Nollställ toDoLists-objektet
-    toDoLists = {
-        Monday: [],
-        Tuesday: [],
-        Wednesday: [],
-        Thursday: [],
-        Friday: []
-    };
+// Hjälpfunktion för att visa/dölja redigeringsknappar
+function visaRedigeringsKnappar(day, redigerar) {
+    document.querySelector(`button[onclick*="laggaTill('${day}"]`).style.display = redigerar ? "none" : "inline-block";
+    document.querySelector(`button[onclick*="sparaRedigering('${day}"]`).style.display = redigerar ? "inline-block" : "none";
+}
 
-    // Uppdatera alla dagars visning i gränssnittet
-    Object.keys(toDoLists).forEach(day => {
-        document.getElementById(`${day.toLowerCase()}Out`).innerHTML = ""; // Töm listans HTML
-    });
-
-    // Spara tomt objekt till localStorage
-    sparaTillLocalStorage();
+// Återställ alla listor
+function rensa() {
+    Object.keys(toDoLists).forEach(day => toDoLists[day] = []);
+    sparaOchUppdateraAlla();
     console.log("Alla veckans listor har rensats.");
 }
 
+// Spara till localStorage och uppdatera en dag
+function sparaOchUppdatera(day) {
+    sparaTillLocalStorage();
+    uppdateraOutput(day);
+}
+
+// Spara och uppdatera alla dagar
+function sparaOchUppdateraAlla() {
+    sparaTillLocalStorage();
+    Object.keys(toDoLists).forEach(uppdateraOutput);
+}
+
+// Spara och ladda från localStorage
 function sparaTillLocalStorage() {
     localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
 }
@@ -127,22 +109,17 @@ function sparaTillLocalStorage() {
 function lasFranLocalStorage() {
     const sparadData = localStorage.getItem("toDoLists");
     if (sparadData) {
-        console.log("Data laddad från localStorage:", sparadData);
         toDoLists = JSON.parse(sparadData);
-    } else {
-        console.log("Ingen data hittad i localStorage.");
+        Object.keys(toDoLists).forEach(day => {
+            toDoLists[day] = toDoLists[day].map(item => 
+                typeof item === "string" ? { task: item, checked: false } : item
+            );
+        });
     }
 }
 
-// Lägg till detta för att läsa in listorna vid sidstart
-document.addEventListener("DOMContentLoaded", function () {
-    lasFranLocalStorage();
-    Object.keys(toDoLists).forEach(day => uppdateraOutput(day));
-});
-
-//Skapar funktion för att kunna dra i sina todos och prioritera de 
-let draggedIndex = null;
-let draggedDay = null;
+// Drag-and-drop funktioner
+let draggedIndex = null, draggedDay = null;
 
 function startDrag(event, day, index) {
     draggedIndex = index;
@@ -151,50 +128,40 @@ function startDrag(event, day, index) {
 }
 
 function allowDrop(event) {
-    event.preventDefault(); // Tillåter dropp
+    event.preventDefault();
 }
 
 function drop(event, day, targetIndex) {
     event.preventDefault();
-
-    if (draggedIndex !== null && draggedDay !== null) {
-        // Hämta det dragna elementet
-        const draggedItem = toDoLists[draggedDay][draggedIndex];
-
-        // Ta bort det dragna elementet från dess ursprungliga position
-        toDoLists[draggedDay].splice(draggedIndex, 1);
-
-        // Infoga det dragna elementet vid målets position
-        toDoLists[day].splice(targetIndex, 0, draggedItem);
-
-        // Uppdatera listorna
-        uppdateraOutput(draggedDay);
-        uppdateraOutput(day);
-
-        // Spara ändringarna
-        sparaTillLocalStorage();
-
-        // Nollställ drag-data
-        draggedIndex = null;
-        draggedDay = null;
+    if (draggedIndex !== null) {
+        const item = toDoLists[draggedDay].splice(draggedIndex, 1)[0];
+        toDoLists[day].splice(targetIndex, 0, item);
+        sparaOchUppdateraAlla();
+        draggedIndex = draggedDay = null;
     }
 }
 
-// Skapa funktioner för att ändra ordningen via pilar
+// Flytta upp/ner i listan
 function moveUp(day, index) {
     if (index > 0) {
-        const item = toDoLists[day].splice(index, 1)[0]; // Ta bort objektet
-        toDoLists[day].splice(index - 1, 0, item); // Lägg till objektet före föregående
-        uppdateraOutput(day);
-        sparaTillLocalStorage();
+        bytPlats(day, index, index - 1);
     }
 }
 
 function moveDown(day, index) {
     if (index < toDoLists[day].length - 1) {
-        const item = toDoLists[day].splice(index, 1)[0]; // Ta bort objektet
-        toDoLists[day].splice(index + 1, 0, item); // Lägg till objektet efter nästa
-        uppdateraOutput(day);
-        sparaTillLocalStorage();
+        bytPlats(day, index, index + 1);
     }
 }
+
+function bytPlats(day, fromIndex, toIndex) {
+    [toDoLists[day][fromIndex], toDoLists[day][toIndex]] = 
+        [toDoLists[day][toIndex], toDoLists[day][fromIndex]];
+    sparaOchUppdatera(day);
+}
+
+// Initial inläsning
+document.addEventListener("DOMContentLoaded", () => {
+    lasFranLocalStorage();
+    Object.keys(toDoLists).forEach(uppdateraOutput);
+});
