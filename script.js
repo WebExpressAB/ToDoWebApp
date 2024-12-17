@@ -15,21 +15,28 @@ uppdateraOutput();
 function uppdateraOutput() {
     var output = "";
     for (var i = 0; i < toDoToday.length; i++) {
-        output +=
-            "<tr draggable='true' ondragstart='startDrag(event, " + i + ")' ondragover='allowDrop(event)' ondrop='drop(event, " + i + ")'>" +
-            "<td class='tdCheck'>" +
-            "<label>" +
-            "<input type='checkbox' " + (toDoToday[i].checked ? "checked" : "") + 
-            " onchange='toggleChecked(" + i + ")' style='width: 100%; margin: 10px;'>" +
-            "</label></td>" +
-            "<td>" + toDoToday[i].name + "<div class='arrow-buttons'>" +
-            "<button onclick='moveUp(" + i + ")'><i class='fa-solid fa-arrow-up'></i></button> " +
-            "<button onclick='moveDown(" + i + ")'><i class='fa-solid fa-arrow-down'></i></button>" +
-            "</div></td>" +
-            "<td class='ikoner'>" +
-            "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" +
-            "<i class='fa-solid fa-trash' onclick='taBort(" + i + ")'></i>" +
-            "</td></tr>";
+        output += 
+        "<tr " +
+        "draggable='true' " +
+        "ondragstart='startDrag(event, " + i + ")' " +
+        "ondragover='allowDrop(event)' " +
+        "ondrop='drop(event, " + i + ")' " +
+        "ontouchstart='startTouch(event, " + i + ")' " +  // Lägg till touchstart
+        "ontouchmove='handleTouchMove(event)' " +          // Lägg till touchmove
+        "ontouchend='drop(event, " + i + ")'>" +           // Lägg till touchend för drop
+        "<td class='tdCheck'>" +
+        "<label>" +
+        "<input type='checkbox' " + (toDoToday[i].checked ? "checked" : "") + 
+        " onchange='toggleChecked(" + i + ")' style='width: 100%; margin: 10px;'>" +
+        "</label></td>" +
+        "<td>" + toDoToday[i].name + "<div class='arrow-buttons'>" +
+        "<button onclick='moveUp(" + i + ")'><i class='fa-solid fa-arrow-up'></i></button> " +
+        "<button onclick='moveDown(" + i + ")'><i class='fa-solid fa-arrow-down'></i></button>" +
+        "</div></td>" +
+        "<td class='ikoner'>" +
+        "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" +
+        "<i class='fa-solid fa-trash' onclick='taBort(" + i + ")'></i>" +
+        "</td></tr>";
     }
     document.getElementById("output").innerHTML = output;
 }
