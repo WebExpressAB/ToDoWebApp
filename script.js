@@ -18,19 +18,18 @@ function uppdateraOutput() {
         output +=
             "<tr draggable='true' ondragstart='startDrag(event, " + i + ")' ondragover='allowDrop(event)' ondrop='drop(event, " + i + ")'>" +
             "<td class='tdCheck'>" +
-            "<label><input type='checkbox' style='width: 100%; margin: 10px;'>" +
-           "</label>" + "</td>" + "<td>" + toDoToday[i] +  "<div class='arrow-buttons'>" +
-           "<button onclick='moveUp(" + i + ")'><i class='fa-solid fa-arrow-up'></i></button> " + 
-           "<!-- Upp pil -->" +
-           "<button onclick='moveDown(" + i + ")'><i class='fa-solid fa-arrow-down'></i></button>" + 
-           "<!-- Ner pil -->" +
-           "</div>" +
-            "</td>" +
+            "<label>" +
+            "<input type='checkbox' " + (toDoToday[i].checked ? "checked" : "") + 
+            " onchange='toggleChecked(" + i + ")' style='width: 100%; margin: 10px;'>" +
+            "</label></td>" +
+            "<td>" + toDoToday[i].name + "<div class='arrow-buttons'>" +
+            "<button onclick='moveUp(" + i + ")'><i class='fa-solid fa-arrow-up'></i></button> " +
+            "<button onclick='moveDown(" + i + ")'><i class='fa-solid fa-arrow-down'></i></button>" +
+            "</div></td>" +
             "<td class='ikoner'>" +
-            "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" + " " +
-            "<i class='fa-solid fa-trash' onclick='taBort(" + i + ")'></i>" + 
-            "</td>" +
-            "</tr>";
+            "<i class='fa-regular fa-pen-to-square' onclick='redigera(" + i + ")'></i>" +
+            "<i class='fa-solid fa-trash' onclick='taBort(" + i + ")'></i>" +
+            "</td></tr>";
     }
     document.getElementById("output").innerHTML = output;
 }
@@ -42,7 +41,12 @@ function sparaTillLocalStorage() {
 function lasFranLocalStorage() {
     const sparadData = localStorage.getItem("toDoToday");
     if (sparadData) {
-        toDoToday = JSON.parse(sparadData);
+        toDoToday = JSON.parse(sparadData).map(task => {
+            return {
+                name: task.name || task, 
+                checked: task.checked || false 
+            };
+        });
     }
 }
 
@@ -52,20 +56,26 @@ function toggleMenu() {
     sidenav.classList.toggle('active');
 }
 
+//Funktion så att det även sparas om man checkat för en checkbox
+function toggleChecked(index) {
+    toDoToday[index].checked = !toDoToday[index].checked; 
+    sparaTillLocalStorage();
+}
+
   // Funktion för att lägga till 
   function laggaTill() {
     let myInput = document.getElementById("myInput").value;
     if (myInput.length !== 0) {
         if (redigeradIndex === -1) {
-            toDoToday.push(myInput);
+            toDoToday.push({ name: myInput, checked: false }); // Lägg till som objekt
         } else {
-            toDoToday[redigeradIndex] = myInput;
+            toDoToday[redigeradIndex].name = myInput; // Uppdatera endast namnet
             redigeradIndex = -1;
             document.getElementById("sparaKnapp").style.display = "none";
         }
         document.getElementById("myInput").value = "";
         uppdateraOutput();
-        sparaTillLocalStorage(); // Spara till localStorage
+        sparaTillLocalStorage();
     }
 }
 
