@@ -18,23 +18,29 @@ for (var i = 0; i < sideLinks.length; i++) {
 }
 
 var projects = []; // Lista på alla projekt
+var draggedTask = { projectIndex: null, taskIndex: null }; // För drag & drop
 
 // Läs in projekt från localStorage vid start
 lasFranLocalStorage();
 uppdateraOutput2();
 
+// Läs in projekt från localStorage vid start
 function lasFranLocalStorage() {
     const sparadData = localStorage.getItem("projects");
-    projects = sparadData ? JSON.parse(sparadData).map(project => 
-        typeof project === "string" ? { name: project, tasks: [] } : project
-    ) : [];
+    projects = sparadData
+        ? JSON.parse(sparadData).map(project => ({
+              name: project.name || "",
+              tasks: project.tasks.map(task => 
+                  typeof task === "string" ? { task, checked: false } : task
+              )
+          }))
+        : [];
 }
 
 // Spara till localStorage
 function sparaTillLocalStorage() {
     localStorage.setItem("projects", JSON.stringify(projects));
 }
-
 // Lägg till ett nytt projekt
 function laggaTill() {
     const projectName = document.getElementById("myInput").value.trim();
@@ -51,15 +57,14 @@ function uppdateraOutput2() {
     document.getElementById("output2").innerHTML = projects.map((project, i) => `
         <div class='card4'>
             <div class='projectCol'>
-                 <i class='fa-solid fa-trash Kasta' onClick='taBortProjekt(${i})'></i>
-                 <p class='KastaHide'>Delete project</p>
+                <i class='fa-solid fa-trash Kasta' onClick='taBortProjekt(${i})'></i>
+                <p class='KastaHide'>Delete project</p>
                 <h2>${project.name || "Nytt projekt"}</h2>
                 <input type='text' id='projectInput${i}' class='projectInput' placeholder='Task...'>
                 <button onclick='laggaTillProjectTask(${i})'>Add Task</button>
                 <ul id='outputProject${i}'>
                     ${getTasksHTML(i)}
                 </ul>
-               
             </div>
         </div>
     `).join("");
@@ -67,13 +72,14 @@ function uppdateraOutput2() {
 
 // Skapa HTML för tasks i ett projekt
 function getTasksHTML(projectIndex) {
-    return projects[projectIndex]?.tasks.map((task, taskIndex) => `
+    return projects[projectIndex]?.tasks.map((taskObj, taskIndex) => `
         <li draggable='true' 
             ondragstart='startDrag(event, ${projectIndex}, ${taskIndex})' 
             ondragover='allowDrop(event)' 
             ondrop='drop(event, ${projectIndex}, ${taskIndex})'>
-            <input type='checkbox'>
-            ${task}
+            <input type='checkbox' ${taskObj.checked ? "checked" : ""} 
+                onchange='toggleCheckbox(${projectIndex}, ${taskIndex}, this)'>
+            ${taskObj.task}
             <div class='arrow-buttons'>
                 <button onclick='moveUp(${projectIndex}, ${taskIndex})'><i class='fa-solid fa-arrow-up'></i></button>
                 <button onclick='moveDown(${projectIndex}, ${taskIndex})'><i class='fa-solid fa-arrow-down'></i></button>
@@ -84,16 +90,21 @@ function getTasksHTML(projectIndex) {
     `).join("") || "";
 }
 
-
 // Lägg till en task till ett projekt
 function laggaTillProjectTask(projectIndex) {
     const taskInput = document.getElementById(`projectInput${projectIndex}`).value.trim();
     if (taskInput) {
-        projects[projectIndex].tasks.push(taskInput);
+        projects[projectIndex].tasks.push({ task: taskInput, checked: false });
         document.getElementById(`projectInput${projectIndex}`).value = "";
         uppdateraOutput2();
         sparaTillLocalStorage();
     }
+}
+
+//Funktion för att spara om man checkat en checkbox i localstorage
+function toggleCheckbox(projectIndex, taskIndex, checkbox) {
+    projects[projectIndex].tasks[taskIndex].checked = checkbox.checked;
+    sparaTillLocalStorage();
 }
 
 // Ta bort en task från ett projekt
@@ -112,9 +123,9 @@ function taBortProjekt(index) {
 
 // Redigera en task i ett projekt
 function redigeraTask(projectIndex, taskIndex) {
-    const newTask = prompt("Edit task", projects[projectIndex].tasks[taskIndex]);
+    const newTask = prompt("Edit task", projects[projectIndex].tasks[taskIndex].task);
     if (newTask !== null) {
-        projects[projectIndex].tasks[taskIndex] = newTask.trim();
+        projects[projectIndex].tasks[taskIndex].task = newTask.trim();
         uppdateraOutput2();
         sparaTillLocalStorage();
     }
@@ -143,7 +154,6 @@ function drop(event, targetProjectIndex, targetTaskIndex) {
     draggedTask = { projectIndex: null, taskIndex: null };
 }
 
-// Flytta upp och ned tasks
 function moveUp(projectIndex, taskIndex) {
     if (taskIndex > 0) {
         [projects[projectIndex].tasks[taskIndex], projects[projectIndex].tasks[taskIndex - 1]] = 
