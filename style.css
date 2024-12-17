@@ -266,6 +266,12 @@ li {
     border-color: rgb(159, 194, 207);
     
 }
+select {
+    padding: 15px;
+    border-radius: 5px;
+    border: solid;
+    border-color: rgb(159, 194, 207);
+}
 .sparaKnappWeek {
     padding: 5px;
 }
