@@ -1,6 +1,7 @@
 /*Bakgrund för sidan*/
 body {
     background-color: rgb(227, 247, 255);
+    font-family: "DM Sans", sans-serif;
   }
 
   /*Sidebar*/
@@ -24,7 +25,7 @@ body {
     font-size: 17px;
     color: #000000;
     display: block;
-    font-family:monospace;
+    font-family: "DM Sans", sans-serif;
     border: solid;
     border-radius: 20px;
     border-color: #b2bbb1;
@@ -41,7 +42,7 @@ body {
     font-size: 17px;
     color: #000000;
     display: block;
-    font-family:monospace;
+    font-family: "DM Sans", sans-serif;
     border: solid;
     border-radius: 20px;
     border-color: #b2bbb1;
@@ -96,7 +97,7 @@ body {
     border-radius: 20px;
     box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
     justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 
@@ -143,7 +144,7 @@ button:hover {
     padding: 40px;
     border-radius: 20px;
     box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 .cardWeek {
@@ -153,7 +154,7 @@ button:hover {
     padding: 40px;
     border-radius: 20px;
     box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 .card4 {
     background-color: white;
@@ -164,7 +165,7 @@ button:hover {
     display: inline-flex;
     width: 38%;
     box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "DM Sans", sans-serif;
 }
 
 
@@ -286,6 +287,9 @@ select {
 }
 .sparaKnappWeek {
     padding: 5px;
+}
+h1 {
+    font-family: "DM Sans", sans-serif;
 }
 @media screen and (max-width: 1450px) {
     .weekContainer {
