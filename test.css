@@ -1,22 +1,25 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "DM sans", sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "DM sans", sans-serif;
+  box-sizing: border-box;
 }
 
 .container {
-    width: 100%;
-    min-height: 100vh;
-   background: linear-gradient(rgb(0,117,160), rgb(102, 174, 201), rgb(0,117,160));
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    rgb(0, 117, 160),
+    rgb(102, 174, 201),
+    rgb(0, 117, 160)
+  );
   /* background: rgb(0,117,160);*/
 
-    display: flex;
+  display: flex;
 }
 
-
-  /*Sidebar*/
- /* .sidenav {
+/*Sidebar*/
+/* .sidenav {
     width: 100%; 
     position: fixed; 
     text-align: center;
@@ -40,22 +43,21 @@
    opacity: 70%;
   }
 */
-  /*Sidebar*/
-  .sidenav {
-    height: 100%; 
-    width: 200px; 
-    z-index: 1; 
-    top: 0;
-    left: 0;
-    background-color: rgb(0,117,160);
-    overflow-x: hidden;
-    padding-top: 30px;
-    box-shadow: 5px 4px 10px rgba(166, 166, 166, 0.287);
+/*Sidebar*/
+.sidenav {
+  height: 100%;
+  width: 200px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 117, 160);
+  overflow-x: hidden;
+  padding-top: 30px;
+  box-shadow: 5px 4px 10px rgba(166, 166, 166, 0.287);
+}
 
-  }
-
-  /*Dagens datum*/
-  /*
+/*Dagens datum*/
+/*
   .datetime {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -71,110 +73,106 @@
     margin: 5px;
     margin-left: 10px;
   }*/
-  
-  /*Länkar i sidebar*/
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    color: #000000;
-    display: block;
-    font-family: "DM Sans", sans-serif;
-    border: solid;
-    border-radius: 20px;
-    border-color: #b2bbb1;
-    border-width: thin;
-    background-color: white;
-    margin: 5px;
-    margin-left: 10px;
-  }
-  /* Dölj hamburgermenyn på stora skärmar */
+
+/*Länkar i sidebar*/
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #000000;
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  border: solid;
+  border-radius: 20px;
+  border-color: #b2bbb1;
+  border-width: thin;
+  background-color: white;
+  margin: 5px;
+  margin-left: 10px;
+}
+/* Dölj hamburgermenyn på stora skärmar */
 .hamburger {
-    display: none;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 2;
-    background: white;
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: none;
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: white;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: none;
 }
 
 .hamburger i {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 .main {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
-
 
 .todo-app {
-    width: 80%;
-    background-color: #fff;
-    margin: 100px auto 20px;
-    padding: 40px 30px 40px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    margin: 50px;
-
-
+  width: 80%;
+  background-color: #fff;
+  margin: 100px auto 20px;
+  padding: 40px 30px 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  margin: 50px;
 }
 
-
 .header {
-   margin-left: 22px;
+  margin-left: 22px;
 }
 
 .todo-app h2 {
-    color: rgb(0,117,160);
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
+  color: rgb(0, 117, 160);
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
 .todo-app h3 {
-    color: rgb(0,117,160);
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+  color: rgb(0, 117, 160);
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-
 .row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /*background: #edeef0;*/
-    border-radius: 10px;
-    padding-left: 20px;
-    margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*background: #edeef0;*/
+  border-radius: 10px;
+  padding-left: 20px;
+  margin-bottom: 25px;
 }
 
 input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 10px;
-    font-weight: 14px;
-    padding: 15px;
-    border-radius: 5px;
-    border: solid;
-    border-color: rgb(159, 194, 207);
-    margin-right: 10px;
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  font-weight: 14px;
+  padding: 15px;
+  border-radius: 5px;
+  border: solid;
+  border-width: 1px;
+  border-color: rgb(159, 194, 207);
+  margin-right: 10px;
 }
 
 button {
- /*   border: none;
+  /*   border: none;
     outline: none;
     padding: 16px 50px;
     background: rgb(0,117,160);
@@ -182,137 +180,132 @@ button {
     font-size: 16px;
     cursor: pointer;
     border-radius: 10px;*/
-    padding: 15px 30px;
-    border-radius: 5px;
-    border: solid;
-    border-color: rgb(159, 194, 207);
-    background: rgb(0,117,160);
-
-    color: white;
+  padding: 15px 30px;
+  border-radius: 5px;
+  border: solid;
+  border-color: rgb(159, 194, 207);
+  background: rgb(0, 117, 160);
+  border-width: 1px;
+  color: white;
 }
 
 button:hover {
-    opacity: 70%;
+  opacity: 70%;
 }
 
 ul {
-    overflow: auto;
-    height: 600px;
-    margin-left: 20px;
+  overflow: auto;
+  height: 600px;
+  margin-left: 20px;
 }
 
 /* Stil för listobjekt */
 ul li {
-    list-style: none;
-    font-size: 17px;
-    padding: 12px 50px 12px 50px; /* Ger utrymme för checkbox till vänster och ikoner till höger */
-    border-bottom: solid;
-    border-color: rgb(0,117,160);
-    position: relative; /* För att placera barn med absolut position */
-    user-select: none;
-    cursor: pointer;
-
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 50px 12px 50px; /* Ger utrymme för checkbox till vänster och ikoner till höger */
+  border-bottom: solid;
+  border-color: rgb(159, 194, 207);
+  border-width: 1px;
+  position: relative; /* För att placera barn med absolut position */
+  user-select: none;
+  cursor: pointer;
 }
 
 /* Checkbox (vänster) */
 ul li::before {
-    content: "";
-    position: absolute; /* Absolut position för att hålla checkboxen på plats */
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-image: url(images/unchecked.png);
-    background-size: cover;
-    background-position: center;
+  content: "";
+  position: absolute; /* Absolut position för att hålla checkboxen på plats */
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-image: url(images/unchecked.png);
+  background-size: cover;
+  background-position: center;
 }
 
 /* Markerad checkbox */
 ul li.checked::before {
-    background-image: url(images/checked.png);
+  background-image: url(images/checked.png);
 }
 
 /* Text i listobjekt */
 ul li span.text {
-    display: block;
-    margin: 0;
-    padding-right: 80px; /* Utrymme för att undvika att texten överlappar ikoner */
-    word-wrap: break-word; /* Tillåt radbrytning för lång text */
-    overflow-wrap: break-word;
-    line-height: 1.5;
+  display: block;
+  margin: 0;
+  padding-right: 80px; /* Utrymme för att undvika att texten överlappar ikoner */
+  word-wrap: break-word; /* Tillåt radbrytning för lång text */
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
 /* Redigeringsikon */
 ul li i {
-    position: absolute; /* Fixera positionen */
-    right: 40px; /* Avstånd från höger */
-    top: 55%;
-    transform: translateY(-50%);
-    font-size: 17px;
-    color: #555;
-    cursor: pointer;
+  position: absolute; /* Fixera positionen */
+  right: 40px; /* Avstånd från höger */
+  top: 55%;
+  transform: translateY(-50%);
+  font-size: 17px;
+  color: #555;
+  cursor: pointer;
 }
 
 /* Borttagningsikon */
 ul li span.delete {
-    position: absolute; /* Fixera positionen */
-    right: 12px; /* Avstånd från höger */
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 25px;
-    color: #555;
-    cursor: pointer;
+  position: absolute; /* Fixera positionen */
+  right: 12px; /* Avstånd från höger */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 25px;
+  color: #555;
+  cursor: pointer;
 }
 
 /* Ikon-hover */
 ul li i:hover,
 ul li span.delete:hover {
-    opacity: 70%;
+  opacity: 70%;
 }
 
-
-
 ul li.checked {
-    color: #555;
-    text-decoration: line-through;
+  color: #555;
+  text-decoration: line-through;
 }
 
 ul li.checked::before {
-    background-image: url(images/checked.png);
+  background-image: url(images/checked.png);
 }
 
 /* Visa hamburgermenyn och dölj sidomenyn på mindre skärmar */
 @media screen and (max-width: 950px) {
+  .hamburger {
+    display: block;
+  }
+  .sidenav.active {
+    display: block;
+  }
+  .sidenav {
+    margin-top: 20px;
 
-    .hamburger {
-        display: block;
-    }
-    .sidenav.active {
-        display: block;
-    }
-    .sidenav {
-        margin-top: 20px;
-      
-        display: none;
-        width: 100%;
-        height: auto;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: rgb(0,117,160);
-        z-index: 1;
-    }
+    display: none;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 117, 160);
+    z-index: 1;
+  }
 
-
-    .todo-app {
-        width: 100%;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    ul {
-        margin-left: 0;
-    }
-
+  .todo-app {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  ul {
+    margin-left: 0;
+  }
 }
