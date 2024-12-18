@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "DM sans", sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+   background: linear-gradient(rgb(0,117,160), rgb(102, 174, 201), rgb(0,117,160));
+  /* background: rgb(0,117,160);*/
+    padding: 10px;
+}
+
+  /*Sidebar*/
+  .sidenav {
+    width: 100%; 
+    position: fixed; 
+margin-left: 35%;
+    margin-top: 50px;
+
+ 
+  }
+/*Länkar i sidebar*/
+.sidenav a {
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0,117,160);
+    font-family: "DM Sans", sans-serif;
+    border-radius: 20px;
+    background-color: white;
+
+  }
+ 
+  .sidenav a:hover {
+   opacity: 70%;
+  }
+
+  .sidenav a.active {
+
+
+
+
+}
+  /* Dölj hamburgermenyn på stora skärmar */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    background: white;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: none;
+}
+
+.hamburger i {
+    font-size: 24px;
+}
+
+
+.todo-app {
+    width: 100%;
+    max-width: 540px;
+    background-color: #fff;
+    margin: 100px auto 20px;
+    padding: 40px 30px 70px;
+    border-radius: 10px;
+
+}
+
+
+.header {
+    text-align: center;
+}
+
+.todo-app h2 {
+    color: rgb(0,117,160);
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.todo-app h3 {
+    color: rgb(0,117,160);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*background: #edeef0;*/
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    font-weight: 14px;
+    padding: 15px;
+    border-radius: 5px;
+    border: solid;
+    border-color: rgb(159, 194, 207);
+    margin-right: 10px;
+}
+
+button {
+ /*   border: none;
+    outline: none;
+    padding: 16px 50px;
+    background: rgb(0,117,160);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;*/
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: solid;
+    border-color: rgb(159, 194, 207);
+    background: rgb(0,117,160);
+
+    color: white;
+}
+
+button:hover {
+    opacity: 70%;
+}
+
+/* Stil för listobjekt */
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 50px 12px 50px; /* Ger utrymme för checkbox till vänster och ikoner till höger */
+    border-bottom: solid;
+    border-color: rgb(0,117,160);
+    position: relative; /* För att placera barn med absolut position */
+    user-select: none;
+    cursor: pointer;
+}
+
+/* Checkbox (vänster) */
+ul li::before {
+    content: "";
+    position: absolute; /* Absolut position för att hålla checkboxen på plats */
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Markerad checkbox */
+ul li.checked::before {
+    background-image: url(images/checked.png);
+}
+
+/* Text i listobjekt */
+ul li span.text {
+    display: block;
+    margin: 0;
+    padding-right: 80px; /* Utrymme för att undvika att texten överlappar ikoner */
+    word-wrap: break-word; /* Tillåt radbrytning för lång text */
+    overflow-wrap: break-word;
+    line-height: 1.5;
+}
+
+/* Redigeringsikon */
+ul li i {
+    position: absolute; /* Fixera positionen */
+    right: 40px; /* Avstånd från höger */
+    top: 55%;
+    transform: translateY(-50%);
+    font-size: 17px;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Borttagningsikon */
+ul li span.delete {
+    position: absolute; /* Fixera positionen */
+    right: 12px; /* Avstånd från höger */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Ikon-hover */
+ul li i:hover,
+ul li span.delete:hover {
+    opacity: 70%;
+}
+
+
+
+ul li.checked {
+    color: #555;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    background-image: url(images/checked.png);
+}

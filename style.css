@@ -19,6 +19,7 @@ body {
   }
 
   /*Dagens datum*/
+  /*
   .datetime {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -33,7 +34,7 @@ body {
     background-color: #ffe6e0;
     margin: 5px;
     margin-left: 10px;
-  }
+  }*/
   
   /*Länkar i sidebar*/
   .sidenav a {
@@ -285,6 +286,24 @@ li {
     border-color: rgb(159, 194, 207);
     
 }
+ul li {
+    position: relative;
+}
+ul li::before {
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-image: url(images/unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top: 12px;
+}
+.Checked {
+    color: #555;
+    text-decoration: line-through;
+}
 select {
     padding: 15px;
     border-radius: 5px;
@@ -331,18 +350,20 @@ h1 {
         background-color: white;
         box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
     }
-    
+
     .sidenav {
+        margin-top: 20px;
         display: none;
         width: 100%;
         height: auto;
         position: fixed;
         top: 0;
         left: 0;
-        background-color: rgb(0,117,160);
+        background-color: rgb(227, 247, 255);
         z-index: 1;
     }
 
+    
     .sidenav.active {
         display: block;
     }

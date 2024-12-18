@@ -8,12 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
     <title>ToDoApp</title>
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidenav">
-      <p id="datetime" class="datetime"></p>
       <a href="https://webexpressab.github.io/ToDoWebApp/index.html" class="sideA active">Today</a>
       <a href="https://webexpressab.github.io/ToDoWebApp/week.html" class="sideA">This week</a>
       <a href="https://webexpressab.github.io/ToDoWebApp/projects.html" class="sideA">Projects</a>
@@ -29,6 +29,7 @@
     <div class="card2">
       <div id="myDIV" class="header">
         <h1>My Todo List</h1>
+        <h3 id="datetime" class="datetime"></h3>
         <input type="text" id="myInput" class="myInput" placeholder="Task...">
         <button id="addBtn" class="addBtn" onclick="laggaTill()">Add</button>
         <button id="sparaKnapp" onclick="sparaRedigering()" style="display: none;">Save edit</button>
@@ -49,4 +50,5 @@
   </div>
 </body>
 <script src="script.js" type="text/javascript"></script>
+
 </html>
