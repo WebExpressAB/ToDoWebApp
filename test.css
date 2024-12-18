@@ -121,7 +121,6 @@
     margin: 100px auto 20px;
     padding: 40px 30px 40px;
     border-radius: 10px;
-    margin: 10px;
     display: flex;
     flex-direction: column;
     min-height: 300px;
@@ -304,6 +303,16 @@ ul li.checked::before {
         left: 0;
         background-color: rgb(0,117,160);
         z-index: 1;
+    }
+
+
+    .todo-app {
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    ul {
+        margin-left: 0;
     }
 
 }
