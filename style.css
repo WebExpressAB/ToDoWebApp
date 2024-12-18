@@ -1,438 +1,402 @@
 /*Bakgrund för sidan*/
 body {
-    background-color: rgb(227, 247, 255);
-    font-family: "DM Sans", sans-serif;
-  }
-
-  /*Sidebar*/
-.sidenav {
-    height: 100%; 
-    width: 200px; 
-    position: fixed; 
-    z-index: 1; 
-    top: 0;
-    left: 0;
-    background-color: rgb(0,117,160);
-    overflow-x: hidden;
-    padding-top: 30px;
-    box-shadow: 5px 4px 10px rgba(166, 166, 166, 0.287);
-  }
-
-  /*Dagens datum*/
-  .datetime {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    color: #000000;
-    display: block;
-    font-family: "DM Sans", sans-serif;
-    border: solid;
-    border-radius: 20px;
-    border-color: #b2bbb1;
-    border-width: thin;
-    background-color: #ffe6e0;
-    margin: 5px;
-    margin-left: 10px;
-  }*/
-  
-  /*Länkar i sidebar*/
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    color: #000000;
-    display: block;
-    font-family: "DM Sans", sans-serif;
-    border: solid;
-    border-radius: 20px;
-    border-color: #b2bbb1;
-    border-width: thin;
-    background-color: white;
-    margin: 5px;
-    margin-left: 10px;
-  }
- 
-  .sidenav a:hover {
-   opacity: 70%;
-  }
-
-  .sidenav a.active {
-
-    border: solid;
-    border-color: yellow;
-
-
+  background-color: rgb(227, 247, 255);
+  font-family: "DM Sans", sans-serif;
 }
-  /* Dölj hamburgermenyn på stora skärmar */
+
+/*Sidebar*/
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 117, 160);
+  overflow-x: hidden;
+  padding-top: 30px;
+  box-shadow: 5px 4px 10px rgba(166, 166, 166, 0.287);
+}
+
+/*Dagens datum*/
+.datetime {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #000000;
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  border: solid;
+  border-radius: 20px;
+  border-color: #b2bbb1;
+  border-width: thin;
+  background-color: #ffe6e0;
+  margin: 5px;
+  margin-left: 10px;
+}
+
+/*Länkar i sidebar*/
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #000000;
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  border: solid;
+  border-radius: 20px;
+  border-color: #b2bbb1;
+  border-width: thin;
+  background-color: white;
+  margin: 5px;
+  margin-left: 10px;
+}
+
+.sidenav a:hover {
+  opacity: 70%;
+}
+
+.sidenav a.active {
+  border: solid;
+  border-color: yellow;
+}
+/* Dölj hamburgermenyn på stora skärmar */
 .hamburger {
-    display: none;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 2;
-    background: white;
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
-    box-shadow: none;
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: white;
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: none;
 }
 
 .hamburger i {
-    font-size: 24px;
+  font-size: 24px;
 }
 
-
-  .main {
-    margin-left: 200px;
-    padding: 0px 10px;
-  
-  }
+.main {
+  margin-left: 200px;
+  padding: 0px 10px;
+}
 
 .card1 {
-    background-color: white;
-    margin: 30px;
-    display: flex;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    justify-content: center;
-    font-family: "DM Sans", sans-serif;
+  background-color: white;
+  margin: 30px;
+  display: flex;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+  justify-content: center;
+  font-family: "DM Sans", sans-serif;
 }
-
 
 input {
-    padding: 15px;
-    border-radius: 5px;
-    border: solid;
-    border-color: rgb(159, 194, 207);
+  padding: 15px;
+  border-radius: 5px;
+  border: solid;
+  border-color: rgb(159, 194, 207);
 }
 .myInput {
-    width: 50%;
-  }
+  width: 500px;
+}
 
-  .arrow-buttons {
-    display: none;
-  }
+.arrow-buttons {
+  display: none;
+}
 .projectInput {
-    width: 70%;
+  width: 77%;
+  width: 70%;
 }
 button {
-    padding: 15px;
-    border-radius: 5px;
-    border: solid;
-    border-color: rgb(159, 194, 207);
-    background-color: white;
-    box-shadow: 4px 4px 5px rgba(166, 166, 166, 0.287);
-
+  padding: 15px;
+  border-radius: 5px;
+  border: solid;
+  border-color: rgb(159, 194, 207);
+  background-color: white;
+  box-shadow: 4px 4px 5px rgba(166, 166, 166, 0.287);
 }
 button:hover {
-   opacity: 50%;
-   
+  opacity: 50%;
 }
 .addBtn {
-    width: 70px;
+  width: 70px;
 }
 .btnRensa {
-    margin-top: 10px;
-    margin-left: 45%;
+  margin-top: 10px;
+  margin-left: 45%;
 }
-
 
 .card2 {
-    background-color: white;
-    margin: 25%;
-    margin-top: 20px;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    font-family: "DM Sans", sans-serif;
-    width: 50%;
-}
-.card2 .header {
-    text-align: center;
+  background-color: white;
+  margin: 50px;
+  margin-top: 20px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+  font-family: "DM Sans", sans-serif;
 }
 
 .cardWeek {
-    background-color: white;
-    margin: 50px;
-    margin-top: 20px;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    font-family: "DM Sans", sans-serif;
+  background-color: white;
+  margin: 50px;
+  margin-top: 20px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+  font-family: "DM Sans", sans-serif;
 }
 .card4 {
-    background-color: white;
-    margin: 50px;
-    margin-top: 20px;
-    padding: 40px;
-    border-radius: 20px;
-    display: inline-flex;
-    width: 38%;
-    box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    font-family: "DM Sans", sans-serif;
+  background-color: white;
+  margin: 50px;
+  margin-top: 20px;
+  padding: 40px;
+  border-radius: 20px;
+  display: inline-flex;
+  width: 38%;
+  box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+  font-family: "DM Sans", sans-serif;
 }
 
-
 table {
-    table-layout: auto; 
-    width: 100%; 
+  table-layout: auto;
+  width: 100%;
 }
 
 .todayTable {
-    border-collapse: collapse; 
+  border-collapse: collapse;
 }
 
-td, th {
-    padding: 10px;
-    border-bottom: solid;
-    border-color: rgb(159, 194, 207);
-
+td,
+th {
+  padding: 10px;
+  border-bottom: solid;
+  border-color: rgb(159, 194, 207);
 }
 
 .weekContainer {
-    display: grid;
-    grid-template-columns: repeat(5, 19.5%); 
-    gap: 10px;  
+  display: grid;
+  grid-template-columns: repeat(5, 19.5%);
+  gap: 10px;
 }
 
 .day {
-    display: inline;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    border: solid;
-    border-radius: 10px;
-    border-color: rgb(159, 194, 207);
+  display: inline;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: solid;
+  border-radius: 10px;
+  border-color: rgb(159, 194, 207);
 }
 
 .projectCol {
-    display: inline;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    border: solid;
-    border-radius: 10px;
-    border-color: rgb(159, 194, 207);
+  display: inline;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border: solid;
+  border-radius: 10px;
+  border-color: rgb(159, 194, 207);
 }
 .Kasta {
-    margin-left: 98%;
+  margin-left: 98%;
 }
 .KastaHide {
-    display: none;
-    margin-left: 92%;
+  display: none;
+  margin-left: 92%;
 }
 .Kasta:hover + .KastaHide {
-    display: block;
-    color: red;
+  display: block;
+  color: red;
 }
 
 .weekInput {
-    margin-bottom: 10px;
-    padding: 5px;
-    width: 73%;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 73%;
 }
 
 .weekAddBtn {
-    margin-bottom: 10px;
-    padding: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
 .weekOutput {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-    overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  overflow-y: auto;
 }
 
 tr.dragged {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 tr.drop-target {
-    border: 2px dashed #000;
+  border: 2px dashed #000;
 }
 
 i {
-    margin-left: 15px;
-    color: #666;
-    cursor: pointer;
+  margin-left: 15px;
+  color: #666;
+  cursor: pointer;
 }
 
 i:hover {
-opacity: 50%;
+  opacity: 50%;
 }
 
 .ikoner {
-    text-align: right;
+  text-align: right;
 }
 
 ul {
-    list-style: none; 
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-    display: flex;
-    align-items: center; /* Centrera vertikalt */
-    padding: 10px 5px; /* Skapa lite avstånd mellan listobjekt */
-    margin: 10px;
-    gap: 10px; /* Avstånd mellan checkbox och text */
-    border-bottom: solid;
-    border-color: rgb(159, 194, 207);
-    
-}
-ul li {
-    position: relative;
-}
-ul li::before {
-    content: "";
-    position: absolute;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
-    background-image: url(images/unchecked.png);
-    background-size: cover;
-    background-position: center;
-    top: 12px;
-}
-.Checked {
-    color: #555;
-    text-decoration: line-through;
+  display: flex;
+  align-items: center; /* Centrera vertikalt */
+  padding: 10px 5px; /* Skapa lite avstånd mellan listobjekt */
+  margin: 10px;
+  gap: 10px; /* Avstånd mellan checkbox och text */
+  border-bottom: solid;
+  border-color: rgb(159, 194, 207);
 }
 select {
-    padding: 15px;
-    border-radius: 5px;
-    border: solid;
-    border-color: rgb(159, 194, 207);
+  padding: 15px;
+  border-radius: 5px;
+  border: solid;
+  border-color: rgb(159, 194, 207);
 }
 .sparaKnappWeek {
-    padding: 5px;
+  padding: 5px;
 }
 h1 {
-    font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 @media screen and (max-width: 1450px) {
-    .weekContainer {
-        grid-template-columns: auto;   
-    }
-    .weekInput {
-        width: 90%;
-    }
-    .projectInput {
-        width: 50%;
-    }
-    .cardWeek {
-        background-color: transparent;
-        box-shadow: none;
-        margin-top: 0;
-        padding-top: 0;
-    }
-        .day {
-        background-color: white;
-        box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    }
+  .weekContainer {
+    grid-template-columns: auto;
+  }
+  .weekInput {
+    width: 90%;
+  }
+  .projectInput {
+    width: 50%;
+  }
+  .cardWeek {
+    background-color: transparent;
+    box-shadow: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .day {
+    background-color: white;
+    box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+  }
 }
 
 /* Visa hamburgermenyn och dölj sidomenyn på mindre skärmar */
 @media screen and (max-width: 950px) {
-    .cardWeek {
-        background-color: transparent;
-        box-shadow: none;
-        margin-top: 0;
-        padding-top: 0;
-    }
-    .day {
-        background-color: white;
-        box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
-    }
+  .cardWeek {
+    background-color: transparent;
+    box-shadow: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .day {
+    background-color: white;
+    box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+  }
 
-    .sidenav {
-        margin-top: 20px;
-        display: none;
-        width: 100%;
-        height: auto;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: rgb(227, 247, 255);
-        z-index: 1;
-    }
+  .sidenav {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 117, 160);
+    z-index: 1;
+  }
 
-    
-    .sidenav.active {
-        display: block;
-    }
+  .sidenav.active {
+    display: block;
+  }
 
-    .hamburger {
-        display: block;
-    }
+  .hamburger {
+    display: block;
+  }
 
-    .main {
-        margin-left: 0;
-    }
-    .myInput {
-        margin-bottom: 10px;
-    }
-    .card1, .card2, .cardWeek, .card4 {
-        margin: 20px 10px;
-        padding: 20px;
-        height: 100%;
-    }
-    
+  .main {
+    margin-left: 0;
+  }
+  .myInput {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .card1,
+  .card2,
+  .cardWeek,
+  .card4 {
+    margin: 20px 10px;
+    padding: 20px;
+    height: 100%;
+  }
 
-    .btnRensa {
-        margin-left: 0;
-        width: 100%;
-    }
+  .btnRensa {
+    margin-left: 0;
+    width: 100%;
+  }
 
-    table {
-        width: 100%;
-    }
-    .weekInput {
-        width: 85%;
-    }
-    .card4 {
-        width: 90%;
-        box-shadow: none;
-    }
-    .arrow-buttons {
-        display: inline-block;
-        margin-left: 5px;
-      }
-      i {
-        margin-left: 0px;
-    }
+  table {
+    width: 100%;
+  }
+  .weekInput {
+    width: 85%;
+  }
+  .card4 {
+    width: 90%;
+    box-shadow: none;
+  }
+  .arrow-buttons {
+    display: inline-block;
+    margin-left: 5px;
+  }
+  i {
+    margin-left: 0px;
+  }
 }
 
 @media screen and (max-width: 650px) {
-    .card1 {
-        margin: 2px;
-        padding: 20px;
-        box-shadow: none;
-        margin-bottom: 20px;
-    }
-    .cardWeek {
-        padding: 0;
-    }
-  
-    .day {
-        box-shadow: none;
-    }
-    
-    button {
-        box-shadow: none;
-    }
-    .weekInput {
-        width: 75%;
-    }
-.card2 {
-    width: 85%;
+  .card1,
+  .card2 {
+    margin: 2px;
+    padding: 20px;
     box-shadow: none;
-    margin-top: 60px;
-}
+    margin-bottom: 20px;
+  }
+  .cardWeek {
+    padding: 0;
+  }
 
+  .day {
+    box-shadow: none;
+  }
+
+  button {
+    box-shadow: none;
+  }
+  .weekInput {
+    width: 75%;
+  }
 }
