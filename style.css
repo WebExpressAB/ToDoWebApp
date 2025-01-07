@@ -367,4 +367,10 @@ h1 {
     box-shadow: none;
     margin: 0;
     }
+
+    .card4 {
+      width: 100%;
+      margin: 0;
+      margin-top: 10px;
+    }
   }

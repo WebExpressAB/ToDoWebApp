@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <title>ToDoApp</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+       <!-- Sidebar -->
+       <div class="sidenav">
+        <a href="https://webexpressab.github.io/ToDoWebApp/index.html" class="sideA active">Today</a>
+        <a href="https://webexpressab.github.io/ToDoWebApp/week.html" class="sideA">This week</a>
+        <a href="https://webexpressab.github.io/ToDoWebApp/projects.html" class="sideA">Projects</a>
+    </div>
+
+
+      <!-- Hamburger menu button -->
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+      </div>
+
+</div> 
+    <div class="main">
+        <div class="card1">
+            <div id="myDIV" class="header">
+                <h2>Projects</h2>
+                <h3 id="datetime" class="datetime"></h3>
+                <input type="text" id="myInput" class="myInput" placeholder="Project name">
+                <button onclick="laggaTill()">Create project</button>
+            </div>
+            <div id="output2"> 
+                <!-- Project list will be dynamically added here -->
+            </div>
+        </div>
+        
+    
+    </div>
+</body>
+<script src="testProjects.js" type="text/javascript"></script>
+</html>
