@@ -130,7 +130,7 @@ body {
     margin-right: 10px;
   }
 .myInput {
-  width: 500px;
+  width: 85%;
 }
 
 .arrow-buttons {
@@ -173,21 +173,21 @@ button:hover {
 
 .cardWeek {
   background-color: white;
-  padding: 40px;
+  padding: 5px;
   border-radius: 20px;
   font-family: "DM Sans", sans-serif;
 }
 
 .card4 {
   background-color: white;
-  margin: 50px;
+  margin-left: 20px;
   margin-top: 20px;
-  padding: 40px;
+  padding: 0;
   border-radius: 20px;
   display: inline-flex;
-  width: 38%;
-  box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
+  width: 47.5%;
   font-family: "DM Sans", sans-serif;
+
 }
 
 table {
