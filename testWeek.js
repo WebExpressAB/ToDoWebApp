@@ -44,6 +44,7 @@ function toggleTaskChecked(day, index) {
     sparaTillLocalStorage();
 }
 
+function addEvent(day) {
 document.getElementById(`${day.toLowerCase()}Out`).addEventListener("click", function (e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
@@ -56,6 +57,7 @@ document.getElementById(`${day.toLowerCase()}Out`).addEventListener("click", fun
         }
     }
 });
+}
 
 // Lägg till en uppgift
 function laggaTill(day, inputId) {
@@ -92,10 +94,11 @@ function redigera(day, index) {
 function sparaRedigering(day, inputId) {
     const input = document.getElementById(inputId);
     if (input.value && redigeringsIndex !== null) {
-        toDoLists[day][redigeringsIndex].task = input.value;
-        redigeringsIndex = null;
-        visaRedigeringsKnappar(day, false);
-        sparaOchUppdatera(day);
+        toDoLists[day][redigeringsIndex].task = input.value; // Uppdatera uppgiften
+        redigeringsIndex = null; // Återställ redigeringsindex
+        input.value = ""; // Töm inputfältet
+        visaRedigeringsKnappar(day, false); // Återställ knapparna
+        sparaOchUppdatera(day); // Spara och uppdatera
     }
 }
 
