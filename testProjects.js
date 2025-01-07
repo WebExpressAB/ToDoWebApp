@@ -60,11 +60,14 @@ function uppdateraOutput2() {
                 <i class='fa-solid fa-trash Kasta' onClick='taBortProjekt(${i})'></i>
                 <p class='KastaHide'>Delete project</p>
                 <h2>${project.name || "Nytt projekt"}</h2>
+                <div class='todo-app'>
                 <input type='text' id='projectInput${i}' class='projectInput' placeholder='Task...'>
                 <button onclick='laggaTillProjectTask(${i})'>Add Task</button>
-                <ul id='outputProject${i}'>
+                </div>
+                  <ul id='outputProject${i}'>
                     ${getTasksHTML(i)}
                 </ul>
+        
             </div>
         </div>
     `).join("");
@@ -73,23 +76,56 @@ function uppdateraOutput2() {
 // Skapa HTML för tasks i ett projekt
 function getTasksHTML(projectIndex) {
     return projects[projectIndex]?.tasks.map((taskObj, taskIndex) => `
-        <li draggable='true' 
+        <li 
+            draggable='true' 
+            class='${taskObj.checked ? "checked" : ""}'
+            onclick='toggleTaskChecked(${projectIndex}, ${taskIndex})'
             ondragstart='startDrag(event, ${projectIndex}, ${taskIndex})' 
             ondragover='allowDrop(event)' 
             ondrop='drop(event, ${projectIndex}, ${taskIndex})'>
-            <input type='checkbox' ${taskObj.checked ? "checked" : ""} 
-                onchange='toggleCheckbox(${projectIndex}, ${taskIndex}, this)'>
             ${taskObj.task}
             <div class='arrow-buttons'>
                 <button onclick='moveUp(${projectIndex}, ${taskIndex})'><i class='fa-solid fa-arrow-up'></i></button>
                 <button onclick='moveDown(${projectIndex}, ${taskIndex})'><i class='fa-solid fa-arrow-down'></i></button>
             </div>
             <i class='fa-regular fa-pen-to-square' onclick='redigeraTask(${projectIndex}, ${taskIndex})'></i>
-            <i class='fa-solid fa-trash' onclick='taBortTask(${projectIndex}, ${taskIndex})'></i>
+            <span class='delete' onclick='taBortTask(${projectIndex}, ${taskIndex})'>\u00D7</span>
         </li>
     `).join("") || "";
 }
 
+function toggleTaskChecked(projectIndex, taskIndex) {
+    // Toggla "checked"-status
+    projects[projectIndex].tasks[taskIndex].checked = 
+        !projects[projectIndex].tasks[taskIndex].checked;
+
+    // Uppdatera gränssnittet och spara till localStorage
+    uppdateraOutput2();
+    sparaTillLocalStorage();
+}
+
+document.getElementById("output2").addEventListener("click", function (e) {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
+        // Uppdatera status i din projektlista
+        const projectIndex = Array.from(document.querySelectorAll('.card4')).indexOf(e.target.closest('.card4'));
+        const taskIndex = Array.from(e.target.parentNode.children).indexOf(e.target);
+        if (projectIndex >= 0 && taskIndex >= 0) {
+            projects[projectIndex].tasks[taskIndex].checked = e.target.classList.contains("checked");
+            sparaTillLocalStorage(); // Uppdatera localStorage
+        }
+    }
+});
+// Markera och ta bort en uppgift
+/*listContainer.addEventListener("click", function (e) {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
+        saveData();
+    } else if (e.target.classList.contains("delete")) {
+        e.target.parentElement.remove();
+        saveData();
+    }
+}, false);*/
 // Lägg till en task till ett projekt
 function laggaTillProjectTask(projectIndex) {
     const taskInput = document.getElementById(`projectInput${projectIndex}`).value.trim();
