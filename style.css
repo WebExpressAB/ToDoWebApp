@@ -347,7 +347,7 @@ ul li.checked::before {
 ul li span.text {
   display: block;
   margin: 0;
-  padding-right: 80px; /* Utrymme för att undvika att texten överlappar ikoner */
+  padding-right: 120px; /* Utrymme för att undvika att texten överlappar ikoner */
   word-wrap: break-word; /* Tillåt radbrytning för lång text */
   overflow-wrap: break-word;
   line-height: 1.5;
@@ -369,7 +369,7 @@ ul li i {
 ul li span.delete {
   position: absolute; /* Fixera positionen */
   right: 12px; /* Avstånd från höger */
-  top: 50%;
+  top: 54%;
   transform: translateY(-50%);
   font-size: 25px;
   color: #555;
