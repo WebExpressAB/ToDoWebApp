@@ -25,7 +25,7 @@ function uppdateraOutput(day) {
             ondrop="drop(event, '${day}', ${index})">
             ${item.task}
             <i class="fa-regular fa-pen-to-square" onclick="redigera('${day}', ${index})"></i>
-            <span class="delete" onclick="taBort('${day}', ${index})">\u00D7</span>
+           <span class="delete" onclick="taBort('${day}', ${index}, event)">\u00D7</span>
             <div class="arrow-buttons">
                 <button onclick="moveUp('${day}', ${index})"><i class="fa-solid fa-arrow-up"></i></button>
                 <button onclick="moveDown('${day}', ${index})"><i class="fa-solid fa-arrow-down"></i></button>
@@ -70,7 +70,8 @@ function laggaTill(day, inputId) {
 }
 
 // Ta bort en uppgift
-function taBort(day, index) {
+function taBort(day, index, event) {
+    event.stopPropagation(); // Hindrar att klicket på "X" påverkar <li>-elementet
     toDoLists[day].splice(index, 1);
     sparaOchUppdatera(day);
 }

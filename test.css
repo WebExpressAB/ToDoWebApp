@@ -52,7 +52,7 @@
   left: 0;
   background-color: rgb(0, 117, 160);
   overflow-x: hidden;
-  padding-top: 30px;
+  padding-top: 45px;
   box-shadow: 5px 4px 10px rgba(166, 166, 166, 0.287);
 }
 
@@ -117,7 +117,7 @@
 }
 
 .todo-app {
-  width: 80%;
+  width: 90%;
   background-color: #fff;
   margin: 100px auto 20px;
   padding: 40px 30px 40px;
@@ -209,6 +209,7 @@ ul li {
   position: relative; /* För att placera barn med absolut position */
   user-select: none;
   cursor: pointer;
+
 }
 
 /* Checkbox (vänster) */
@@ -250,6 +251,7 @@ ul li i {
   font-size: 17px;
   color: #555;
   cursor: pointer;
+   
 }
 
 /* Borttagningsikon */

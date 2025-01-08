@@ -33,7 +33,7 @@ body {
     left: 0;
     background-color: rgb(0, 117, 160);
     overflow-x: hidden;
-    padding-top: 30px;
+    padding-top: 45px;
     box-shadow: 5px 4px 10px rgba(166, 166, 166, 0.287);
   }
 
@@ -86,7 +86,7 @@ body {
   }
 
 .card1 {
-    width: 80%;
+    width: 90%;
     background-color: #fff;
     margin: 100px auto 20px;
     padding: 40px 30px 40px;
@@ -169,6 +169,7 @@ button:hover {
   border-radius: 20px;
   box-shadow: 8px 4px 5px rgba(166, 166, 166, 0.287);
   font-family: "DM Sans", sans-serif;
+  border-width: 1px;
 }
 
 .cardWeek {
@@ -176,6 +177,7 @@ button:hover {
   padding: 5px;
   border-radius: 20px;
   font-family: "DM Sans", sans-serif;
+  border-width: 1px;
 }
 
 .card4 {
@@ -184,6 +186,7 @@ button:hover {
   margin-top: 20px;
   padding: 0;
   border-radius: 20px;
+  border-width: 1px;
   display: inline-flex;
   width: 47.5%;
   font-family: "DM Sans", sans-serif;
@@ -210,6 +213,7 @@ th {
   display: grid;
   grid-template-columns: repeat(5, 19.5%);
   gap: 10px;
+  padding: 10px;
 }
 
 .day {
@@ -219,6 +223,7 @@ th {
   padding: 10px;
   border: solid;
   border-radius: 10px;
+  border-width: 1px;
   border-color: rgb(159, 194, 207);
 }
 
@@ -230,6 +235,7 @@ th {
   padding: 20px;
   border: solid;
   border-radius: 10px;
+  border-width: 1px;
   border-color: rgb(159, 194, 207);
 }
 .Kasta {
@@ -352,6 +358,7 @@ ul li i {
   position: absolute; /* Fixera positionen */
   right: 40px; /* Avstånd från höger */
   top: 55%;
+  margin-left: 5px;
   transform: translateY(-50%);
   font-size: 17px;
   color: #555;

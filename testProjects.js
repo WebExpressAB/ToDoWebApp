@@ -145,10 +145,12 @@ function toggleCheckbox(projectIndex, taskIndex, checkbox) {
 
 // Ta bort en task från ett projekt
 function taBortTask(projectIndex, taskIndex) {
+    event.stopPropagation(); 
     projects[projectIndex].tasks.splice(taskIndex, 1);
     uppdateraOutput2();
     sparaTillLocalStorage();
 }
+
 
 //Ta bort ett projekt 
 function taBortProjekt(index) {
