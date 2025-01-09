@@ -161,6 +161,7 @@ function taBortProjekt(index) {
 
 // Redigera en task i ett projekt
 function redigeraTask(projectIndex, taskIndex) {
+    event.stopPropagation(); 
     const newTask = prompt("Edit task", projects[projectIndex].tasks[taskIndex].task);
     if (newTask !== null) {
         projects[projectIndex].tasks[taskIndex].task = newTask.trim();

@@ -86,6 +86,7 @@ function toggleCheckbox(day, index, checkbox) {
 let redigeringsIndex = null;
 
 function redigera(day, index) {
+    event.stopPropagation(); 
     const input = document.getElementById(`${day.toLowerCase()}Input`);
     input.value = toDoLists[day][index].task;
     redigeringsIndex = index;
