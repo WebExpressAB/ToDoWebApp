@@ -392,7 +392,7 @@ select {
 h1 {
   font-family: "DM Sans", sans-serif;
 }
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1500px) {
   .weekContainer {
     grid-template-columns: auto;
   }
@@ -411,6 +411,9 @@ h1 {
   .day {
     background-color: white;
     
+  }
+  .myInput {
+    width: 70%;
   }
 }
 
@@ -454,9 +457,9 @@ h1 {
       margin: 0;
       margin-top: 10px;
     }
-    
+ 
   }
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 655px) {
     .myInput {
       width: 50%;
     }
