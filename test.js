@@ -101,6 +101,7 @@ function setupDragAndDrop() {
 
 // Redigera en uppgift
 function editTask(editButton) {
+    event.stopPropagation(); 
     const li = editButton.parentElement; // Hitta listpunkten som ikonen tillhör
     const currentText = li.textContent.replace("\u00D7", "").trim(); // Hämta text utan "×"
     inputBox.value = currentText; // Flytta texten till input-fältet
